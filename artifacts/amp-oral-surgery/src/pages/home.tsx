@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone } from "lucide-react";
+import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone, Quote } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import heroImg from "@assets/hero-surgery.png";
 import aboutImg from "@assets/about-team.png";
+import consultationImg from "@assets/consultation.png";
 
 const stats = [
   { value: "15+", label: "Years of Experience" },
@@ -65,28 +67,30 @@ export default function Home() {
       <title>AMP Oral Surgery | Expert Oral & Maxillofacial Care</title>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[90vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-slate-900">
         <img
           src={heroImg}
           alt="Oral surgery care"
           className="absolute inset-0 w-full h-full object-cover object-top opacity-55"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/20 to-transparent" />
+        <div className="absolute inset-0 bg-grid-dark opacity-40" />
+        <div className="glow-blob bg-primary/40 w-[420px] h-[420px] -top-20 -left-20" />
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-20 pt-36">
-          <div className="max-w-2xl text-white space-y-6">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-24 pt-40">
+          <Reveal y={20} className="max-w-2xl text-white space-y-6">
             <div
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md"
               data-testid="badge-accepting-patients"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Now Accepting New Patients
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-[1.05] tracking-tight text-white">
               Expert Surgical Care.{" "}
-              <span className="text-blue-300">Exceptional Comfort.</span>
+              <span className="text-gradient">Exceptional Comfort.</span>
             </h1>
 
             <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl">
@@ -98,7 +102,7 @@ export default function Home() {
               <Button
                 size="lg"
                 asChild
-                className="rounded-full font-semibold px-7"
+                className="rounded-full font-semibold px-7 shadow-glow-soft hover:shadow-glow transition-shadow"
                 data-testid="button-hero-request"
               >
                 <Link href="/contact">Request an Appointment</Link>
@@ -106,7 +110,7 @@ export default function Home() {
               <Button
                 size="lg"
                 asChild
-                className="rounded-full font-semibold px-7 bg-white text-slate-900 hover:bg-slate-100"
+                className="rounded-full font-semibold px-7 bg-white/95 text-slate-900 hover:bg-white backdrop-blur-sm"
                 data-testid="button-hero-procedures"
               >
                 <Link href="/procedures">
@@ -123,35 +127,37 @@ export default function Home() {
               <Phone size={15} />
               <span>(555) 867-5309 — Mon–Fri, 8 AM–5 PM</span>
             </a>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── STATS BAR ────────────────────────────────────────── */}
-      <section className="bg-white border-b border-slate-100">
+      <section className="bg-white border-b border-slate-100 relative z-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-100">
-            {stats.map((s) => (
-              <div
+            {stats.map((s, i) => (
+              <Reveal
                 key={s.label}
-                className="py-7 px-6 text-center"
-                data-testid={`stat-${s.label.toLowerCase().replace(/\s+/g, "-")}`}
+                delay={i * 0.08}
+                className="py-8 px-6 text-center"
               >
-                <p className="text-3xl md:text-4xl font-bold font-display text-primary">{s.value}</p>
-                <p className="text-slate-500 text-sm mt-1">{s.label}</p>
-              </div>
+                <div data-testid={`stat-${s.label.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <p className="text-3xl md:text-4xl font-bold font-display text-gradient inline-block">{s.value}</p>
+                  <p className="text-slate-500 text-sm mt-1">{s.label}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── WHY CHOOSE US ────────────────────────────────────── */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+            <Reveal className="space-y-8">
               <div>
-                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
                   Why AMP Oral Surgery
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-5">
@@ -164,10 +170,14 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {features.map((f) => (
-                  <div key={f.title} className="flex gap-5 items-start" data-testid={`feature-${f.title.toLowerCase().replace(/\s+/g, "-")}`}>
-                    <div className="bg-blue-50 text-primary w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div
+                    key={f.title}
+                    className="flex gap-5 items-start group rounded-xl p-3 -mx-3 hover:bg-slate-50 transition-colors"
+                    data-testid={`feature-${f.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    <div className="bg-gradient-to-br from-primary to-accent text-white w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-glow-soft group-hover:scale-105 transition-transform">
                       <f.icon size={20} />
                     </div>
                     <div>
@@ -187,33 +197,37 @@ export default function Home() {
                   Meet Our Team <ArrowRight className="ml-1.5" size={15} />
                 </Link>
               </Button>
-            </div>
+            </Reveal>
 
             {/* Right: image collage */}
-            <div className="relative grid grid-cols-2 gap-4 h-[500px]">
-              <div className="rounded-2xl overflow-hidden row-span-2">
-                <img src={heroImg} alt="Oral surgery care" className="w-full h-full object-cover" />
-              </div>
-              <div className="rounded-2xl overflow-hidden">
-                <img src={aboutImg} alt="Patient consultation" className="w-full h-full object-cover object-top" />
-              </div>
-              <div className="rounded-2xl bg-slate-900 flex items-center justify-center p-6 text-center text-white">
-                <div>
-                  <p className="text-4xl font-bold font-display">98%</p>
-                  <p className="text-slate-400 text-sm mt-1">Patient Satisfaction</p>
+            <Reveal delay={0.15} className="relative">
+              <div className="glow-blob bg-accent/30 w-72 h-72 -bottom-10 -right-10" />
+              <div className="relative grid grid-cols-2 gap-4 h-[520px]">
+                <div className="rounded-2xl overflow-hidden row-span-2 ring-frame">
+                  <img src={heroImg} alt="Oral surgery care" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-2xl overflow-hidden ring-frame">
+                  <img src={consultationImg} alt="Patient consultation" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-6 text-center text-white shadow-lifted bg-grid-dark">
+                  <div>
+                    <p className="text-4xl font-bold font-display">98%</p>
+                    <p className="text-slate-400 text-sm mt-1">Patient Satisfaction</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* ── PROCEDURES OVERVIEW ─────────────────────────────── */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+              <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
                 What We Offer
               </span>
               <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4">
@@ -229,21 +243,24 @@ export default function Home() {
                 View All <ArrowRight className="ml-1.5" size={15} />
               </Link>
             </Button>
-          </div>
+          </Reveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {procedures.map((proc, i) => (
-              <Link
-                key={proc.name}
-                href={proc.path}
-                data-testid={`card-proc-home-${i}`}
-                className="group bg-white border border-slate-200 rounded-xl px-6 py-5 flex items-center justify-between hover:border-primary/40 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
-              >
-                <span className="font-medium text-slate-800 group-hover:text-primary transition-colors text-sm">
-                  {proc.name}
-                </span>
-                <ArrowRight size={16} className="text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-              </Link>
+              <Reveal key={proc.name} delay={(i % 3) * 0.08}>
+                <Link
+                  href={proc.path}
+                  data-testid={`card-proc-home-${i}`}
+                  className="group bg-white border border-slate-200/70 rounded-2xl px-6 py-5 flex items-center justify-between shadow-soft hover:shadow-lifted hover:-translate-y-1 hover:border-primary/30 transition-all duration-300"
+                >
+                  <span className="font-medium text-slate-800 group-hover:text-primary transition-colors text-sm">
+                    {proc.name}
+                  </span>
+                  <span className="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-primary flex items-center justify-center transition-colors">
+                    <ArrowRight size={15} className="text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -253,19 +270,20 @@ export default function Home() {
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden aspect-[4/5] max-h-[580px]">
+            <Reveal className="relative">
+              <div className="absolute -top-5 -left-5 w-28 h-28 rounded-2xl border-2 border-primary/20 hidden md:block" />
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] max-h-[580px] ring-frame">
                 <img src={aboutImg} alt="Surgical team at AMP Oral Surgery" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -bottom-5 -right-5 bg-slate-900 rounded-xl p-5 text-white shadow-lg max-w-[200px]">
+              <div className="absolute -bottom-6 -right-4 md:-right-6 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-5 text-white shadow-lifted max-w-[200px]">
                 <p className="text-xs text-slate-400 mb-1">Trusted by</p>
                 <p className="text-3xl font-bold font-display">5,000+</p>
                 <p className="text-xs text-slate-400 mt-1">patients in our community</p>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="space-y-5">
-              <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal delay={0.15} className="space-y-5">
+              <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
                 About AMP Oral Surgery
               </span>
               <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight">
@@ -287,16 +305,17 @@ export default function Home() {
                   <Link href="/new-patients">New Patient Info</Link>
                 </Button>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* ── TESTIMONIALS ─────────────────────────────────────── */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <Reveal className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
               Patient Stories
             </span>
             <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">
@@ -305,61 +324,65 @@ export default function Home() {
             <p className="text-slate-500 text-base">
               Hear from the people whose care we're most proud of.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
-              <div
-                key={i}
-                data-testid={`card-testimonial-${i}`}
-                className="bg-white rounded-2xl p-7 border border-slate-200 hover:shadow-md transition-all"
-              >
-                <div className="flex mb-4">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} size={14} className="text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-slate-600 leading-relaxed text-sm italic mb-6">"{t.text}"</p>
-                <div className="flex items-center gap-3 border-t border-slate-100 pt-5">
-                  <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-bold text-xs font-display">
-                    {t.name.charAt(0)}
+              <Reveal key={i} delay={i * 0.1}>
+                <div
+                  data-testid={`card-testimonial-${i}`}
+                  className="bg-white rounded-2xl p-7 border border-slate-200/70 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 h-full relative"
+                >
+                  <Quote className="absolute top-6 right-6 text-slate-100" size={40} />
+                  <div className="flex mb-4 relative">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <Star key={j} size={14} className="text-yellow-400 fill-yellow-400" />
+                    ))}
                   </div>
-                  <div>
-                    <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
-                    <p className="text-slate-400 text-xs">Verified Patient</p>
+                  <p className="text-slate-600 leading-relaxed text-sm italic mb-6 relative">"{t.text}"</p>
+                  <div className="flex items-center gap-3 border-t border-slate-100 pt-5">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-xs font-display">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
+                      <p className="text-slate-400 text-xs">Verified Patient</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── CTA BANNER ───────────────────────────────────────── */}
-      <section className="py-20 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6">
+      <section className="py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-dark opacity-50" />
+        <div className="glow-blob bg-primary/50 w-[460px] h-[460px] -top-32 left-1/2 -translate-x-1/2" />
+        <Reveal className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
+          <span className="inline-flex items-center rounded-full bg-white/10 border border-white/15 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6 backdrop-blur-sm">
             Get Started
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold font-display text-white leading-tight mb-5">
             Ready to restore your smile and health?
           </h2>
-          <p className="text-slate-500 text-lg mb-8">
+          <p className="text-slate-300 text-lg mb-8">
             Contact our office today to schedule your consultation and discuss your treatment options.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-cta-schedule">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-cta-schedule">
               <Link href="/contact">Schedule a Consultation</Link>
             </Button>
-            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800" data-testid="button-cta-procedures">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-white text-slate-900 hover:bg-slate-100" data-testid="button-cta-procedures">
               <Link href="/procedures">View Our Procedures</Link>
             </Button>
           </div>
-          <a href="tel:5558675309" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors text-sm mt-6">
+          <a href="tel:5558675309" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mt-6">
             <Phone size={14} />
             <span>Or call us at (555) 867-5309</span>
           </a>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

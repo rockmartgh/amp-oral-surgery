@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, MapPin, Mail, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/reception-area.png";
 
 const contactInfo = [
@@ -56,39 +57,42 @@ export default function Contact() {
       <title>Contact Us | AMP Oral Surgery</title>
 
       {/* Hero — image banner */}
-      <section className="relative h-64 overflow-hidden">
+      <section className="relative h-72 overflow-hidden">
         <img
           src={receptionImg}
           alt="AMP Oral Surgery office"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/65 to-slate-900/40" />
+        <div className="absolute inset-0 bg-grid-dark opacity-40" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10 h-full flex flex-col justify-center">
-          <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-3 w-fit">
-            Get in Touch
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-white leading-tight">
-            Contact Us
-          </h1>
+          <Reveal y={20}>
+            <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-3 w-fit backdrop-blur-md">
+              Get in Touch
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold font-display text-white leading-tight">
+              Contact Us
+            </h1>
+          </Reveal>
         </div>
       </section>
 
       {/* Contact Content */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
 
             {/* Left: Info */}
-            <div className="space-y-10">
+            <Reveal className="space-y-10">
               <div>
-                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-5 block w-fit">
+                <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-5 ring-1 ring-blue-100 w-fit">
                   Reach Us
                 </span>
                 <div className="space-y-6 mt-4">
                   {contactInfo.map((item) => (
                     <div key={item.label} className="flex items-start gap-4">
-                      <div className="bg-blue-50 text-primary w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <item.icon size={16} />
+                      <div className="bg-gradient-to-br from-primary to-accent text-white w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-glow-soft">
+                        <item.icon size={17} />
                       </div>
                       <div>
                         <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
@@ -104,10 +108,10 @@ export default function Contact() {
               </div>
 
               <div>
-                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-4 block w-fit">
+                <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-4 ring-1 ring-blue-100 w-fit">
                   Office Hours
                 </span>
-                <div className="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden mt-4">
+                <div className="bg-white rounded-2xl border border-slate-200/70 overflow-hidden mt-4 shadow-soft">
                   {hours.map((h, i) => (
                     <div
                       key={h.day}
@@ -123,22 +127,22 @@ export default function Contact() {
               </div>
 
               {/* Map placeholder */}
-              <div className="rounded-xl overflow-hidden bg-slate-100 h-48 flex items-center justify-center text-slate-400 border border-slate-200">
+              <div className="rounded-2xl overflow-hidden bg-slate-100 h-48 flex items-center justify-center text-slate-400 border border-slate-200/70 shadow-soft bg-grid">
                 <div className="text-center">
                   <MapPin size={28} className="mx-auto mb-2 text-slate-300" />
                   <p className="text-sm font-medium text-slate-400">123 Medical Center Dr, San Francisco, CA</p>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
             {/* Right: Form */}
-            <div>
-              <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6 block w-fit">
+            <Reveal delay={0.15}>
+              <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6 ring-1 ring-blue-100 w-fit">
                 Send a Message
               </span>
 
               {submitted ? (
-                <div className="bg-green-50 border border-green-100 rounded-xl p-10 text-center mt-4">
+                <div className="bg-green-50 border border-green-100 rounded-2xl p-10 text-center mt-4 shadow-soft">
                   <CheckCircle2 size={40} className="text-green-500 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-slate-900 font-display mb-2">
                     Message Received!
@@ -151,22 +155,22 @@ export default function Contact() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-5 bg-slate-50 rounded-xl p-7 border border-slate-200 mt-4"
+                  className="space-y-5 bg-white rounded-2xl p-7 border border-slate-200/70 mt-4 shadow-lifted"
                 >
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</Label>
-                      <Input id="name" name="name" required placeholder="Jane Smith" value={form.name} onChange={handleChange} data-testid="input-name" className="bg-white" />
+                      <Input id="name" name="name" required placeholder="Jane Smith" value={form.name} onChange={handleChange} data-testid="input-name" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone Number</Label>
-                      <Input id="phone" name="phone" type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={handleChange} data-testid="input-phone" className="bg-white" />
+                      <Input id="phone" name="phone" type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={handleChange} data-testid="input-phone" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-sm font-medium text-slate-700">Email Address</Label>
-                    <Input id="email" name="email" type="email" required placeholder="jane@example.com" value={form.email} onChange={handleChange} data-testid="input-email" className="bg-white" />
+                    <Input id="email" name="email" type="email" required placeholder="jane@example.com" value={form.email} onChange={handleChange} data-testid="input-email" />
                   </div>
 
                   <div className="space-y-2">
@@ -187,10 +191,10 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-sm font-medium text-slate-700">Message</Label>
-                    <Textarea id="message" name="message" required rows={5} placeholder="Tell us how we can help you..." value={form.message} onChange={handleChange} data-testid="textarea-message" className="bg-white" />
+                    <Textarea id="message" name="message" required rows={5} placeholder="Tell us how we can help you..." value={form.message} onChange={handleChange} data-testid="textarea-message" />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full rounded-full font-semibold" data-testid="button-submit-contact">
+                  <Button type="submit" size="lg" className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-contact">
                     Send Message
                   </Button>
 
@@ -199,7 +203,7 @@ export default function Contact() {
                   </p>
                 </form>
               )}
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

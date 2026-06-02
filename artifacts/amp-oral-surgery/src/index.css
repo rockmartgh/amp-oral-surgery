@@ -139,3 +139,57 @@
     @apply font-accent;
   }
 }
+
+/* ── Modern depth & texture utilities ───────────────────────── */
+.shadow-soft {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 6px 16px -4px rgba(15, 23, 42, 0.06);
+}
+.shadow-lifted {
+  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, 0.08), 0 24px 48px -16px rgba(15, 23, 42, 0.18);
+}
+.shadow-glow {
+  box-shadow: 0 24px 60px -18px rgba(24, 99, 220, 0.5);
+}
+.shadow-glow-soft {
+  box-shadow: 0 18px 50px -20px rgba(24, 99, 220, 0.35);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, hsl(217 85% 60%), hsl(206 100% 52%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle dot grid for light surfaces */
+.bg-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.05) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+/* Dot grid for dark surfaces */
+.bg-grid-dark {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.07) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+/* Soft radial glow blobs used behind hero / sections */
+.glow-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Decorative gradient ring used on framed images */
+.ring-frame {
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06), 0 30px 60px -24px rgba(15, 23, 42, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

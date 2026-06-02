@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import proceduresRoomImg from "@assets/procedures-room.png";
 import consultationImg from "@assets/consultation.png";
 
@@ -67,11 +68,13 @@ export default function Procedures() {
       <title>Procedures | AMP Oral Surgery</title>
 
       {/* Page Hero — split layout */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden relative">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="glow-blob bg-primary/20 w-80 h-80 -top-20 right-0" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal>
+              <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
                 What We Offer
               </span>
               <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
@@ -82,17 +85,20 @@ export default function Procedures() {
                 the full spectrum of oral and maxillofacial care — delivered with precision, technology,
                 and genuine compassion.
               </p>
-              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+              <Button asChild className="rounded-full font-semibold px-6 mt-8 shadow-glow-soft hover:shadow-glow transition-shadow" size="lg">
                 <Link href="/contact">Request a Consultation</Link>
               </Button>
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
-              <img
-                src={proceduresRoomImg}
-                alt="Modern oral surgery suite"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            </Reveal>
+            <Reveal delay={0.15} className="relative">
+              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl border-2 border-primary/20 hidden md:block" />
+              <div className="rounded-2xl overflow-hidden aspect-video ring-frame relative">
+                <img
+                  src={proceduresRoomImg}
+                  alt="Modern oral surgery suite"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -102,40 +108,46 @@ export default function Procedures() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {procedures.map((proc, i) => (
-              <div
-                key={proc.name}
-                data-testid={`card-procedure-${i}`}
-                className="bg-white rounded-xl p-7 border border-slate-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
-              >
-                <h3 className="text-lg font-bold text-slate-900 mb-3 font-display">{proc.name}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm flex-1">{proc.description}</p>
-                <ul className="mt-5 space-y-2 border-t border-slate-100 pt-5">
-                  {proc.benefits.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-slate-600">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Reveal key={proc.name} delay={(i % 3) * 0.08}>
+                <div
+                  data-testid={`card-procedure-${i}`}
+                  className="bg-white rounded-2xl p-7 border border-slate-200/70 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group"
+                >
+                  <div className="w-1.5 h-8 rounded-full bg-gradient-to-b from-primary to-accent mb-4 group-hover:h-10 transition-all" />
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 font-display">{proc.name}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm flex-1">{proc.description}</p>
+                  <ul className="mt-5 space-y-2 border-t border-slate-100 pt-5">
+                    {proc.benefits.map((b) => (
+                      <li key={b} className="flex items-center gap-2 text-sm text-slate-600">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Mid-page image + CTA strip */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 bg-slate-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
-              <img
-                src={consultationImg}
-                alt="Surgeon consulting with patient"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal className="relative">
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-2xl border-2 border-accent/20 hidden md:block" />
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] ring-frame relative">
+                <img
+                  src={consultationImg}
+                  alt="Surgeon consulting with patient"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
                 Your Care
               </span>
               <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mt-4 mb-4">
@@ -155,7 +167,7 @@ export default function Procedures() {
                   <Link href="/new-patients">New Patient Info</Link>
                 </Button>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

@@ -1,0 +1,1 @@
+- [framer-motion reduced-motion](framer-motion-reduced-motion.md) — CSS prefers-reduced-motion does NOT stop framer JS animations; use useReducedMotion() in reveal wrappers.

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Award, BookOpen, Users, ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import aboutTeamImg from "@assets/about-team.png";
 import consultationImg from "@assets/consultation.png";
 
@@ -25,17 +26,37 @@ const values = [
   },
 ];
 
+const team = [
+  {
+    name: "Dr. A. Mitchell, D.D.S., M.D.",
+    title: "Oral & Maxillofacial Surgeon",
+    bio: "Board-certified specialist with over 15 years of experience in complex oral surgery, implantology, and jaw reconstruction.",
+  },
+  {
+    name: "Dr. M. Patel, D.D.S.",
+    title: "Oral & Maxillofacial Surgeon",
+    bio: "Specializing in dental implants, wisdom teeth management, and facial trauma. Dedicated to patient-centered outcomes.",
+  },
+  {
+    name: "Dr. P. Rosenberg, D.D.S.",
+    title: "Oral & Maxillofacial Surgeon",
+    bio: "Expert in orthognathic surgery and cleft lip/palate treatment with fellowship training from a leading academic medical center.",
+  },
+];
+
 export default function About() {
   return (
     <div className="flex flex-col w-full">
       <title>About Us | AMP Oral Surgery</title>
 
       {/* Hero — split layout */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden relative">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="glow-blob bg-primary/20 w-80 h-80 -top-20 right-0" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal>
+              <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
                 Our Story
               </span>
               <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
@@ -45,27 +66,30 @@ export default function About() {
                 Founded on the belief that exceptional surgical care and genuine compassion are
                 inseparable, AMP Oral Surgery has served our community with integrity, skill, and heart.
               </p>
-              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+              <Button asChild className="rounded-full font-semibold px-6 mt-8 shadow-glow-soft hover:shadow-glow transition-shadow" size="lg">
                 <Link href="/contact">Schedule a Consultation</Link>
               </Button>
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
-              <img
-                src={aboutTeamImg}
-                alt="AMP Oral Surgery team"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+            </Reveal>
+            <Reveal delay={0.15} className="relative">
+              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl border-2 border-primary/20 hidden md:block" />
+              <div className="rounded-2xl overflow-hidden aspect-video ring-frame relative">
+                <img
+                  src={aboutTeamImg}
+                  alt="AMP Oral Surgery team"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Mission & Story */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-5">
-              <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal className="space-y-5">
+              <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
                 Our Mission
               </span>
               <h2 className="text-4xl font-bold font-display text-slate-900 leading-tight">
@@ -86,49 +110,51 @@ export default function About() {
                 you will receive the same level of attentive, personalized care. That's the AMP
                 commitment.
               </p>
-            </div>
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
+            </Reveal>
+            <Reveal delay={0.15} className="relative">
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] ring-frame">
                 <img
                   src={consultationImg}
                   alt="Surgeon with patient"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 bg-primary text-white rounded-xl p-5 shadow-lg">
+              <div className="absolute -bottom-6 -left-4 md:-left-6 bg-gradient-to-br from-primary to-accent text-white rounded-2xl p-5 shadow-glow">
                 <p className="text-3xl font-bold font-display">15+</p>
-                <p className="text-xs text-blue-200 mt-1">Years of Experience</p>
+                <p className="text-xs text-blue-100 mt-1">Years of Experience</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+      <section className="py-20 bg-slate-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <Reveal className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
               What Guides Us
             </span>
             <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">Our Core Values</h2>
             <p className="text-slate-500">
               These aren't just words on a wall. They shape every interaction we have with our patients.
             </p>
-          </div>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {values.map((v, i) => (
-              <div
-                key={v.title}
-                data-testid={`card-value-${i}`}
-                className="bg-white rounded-xl p-7 border border-slate-200 hover:shadow-sm transition-all"
-              >
-                <div className="bg-blue-50 text-primary w-12 h-12 rounded-lg flex items-center justify-center mb-5">
-                  <v.icon size={22} />
+              <Reveal key={v.title} delay={i * 0.1}>
+                <div
+                  data-testid={`card-value-${i}`}
+                  className="bg-white rounded-2xl p-7 border border-slate-200/70 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 h-full group"
+                >
+                  <div className="bg-gradient-to-br from-primary to-accent text-white w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-glow-soft group-hover:scale-105 transition-transform">
+                    <v.icon size={22} />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{v.title}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm">{v.description}</p>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{v.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{v.description}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -137,73 +163,60 @@ export default function About() {
       {/* Team */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+          <Reveal className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
               The People Behind Your Care
             </span>
             <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">Meet Our Team</h2>
             <p className="text-slate-500">
               Our surgeons and staff are united by a passion for oral health and a commitment to excellence.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Dr. A. Mitchell, D.D.S., M.D.",
-                title: "Oral & Maxillofacial Surgeon",
-                bio: "Board-certified specialist with over 15 years of experience in complex oral surgery, implantology, and jaw reconstruction.",
-              },
-              {
-                name: "Dr. M. Patel, D.D.S.",
-                title: "Oral & Maxillofacial Surgeon",
-                bio: "Specializing in dental implants, wisdom teeth management, and facial trauma. Dedicated to patient-centered outcomes.",
-              },
-              {
-                name: "Dr. P. Rosenberg, D.D.S.",
-                title: "Oral & Maxillofacial Surgeon",
-                bio: "Expert in orthognathic surgery and cleft lip/palate treatment with fellowship training from a leading academic medical center.",
-              },
-            ].map((doctor, i) => (
-              <div
-                key={doctor.name}
-                data-testid={`card-doctor-${i}`}
-                className="bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-sm transition-all"
-              >
-                <div className="bg-slate-100 h-48 flex items-center justify-center">
-                  <p className="text-xs font-medium text-slate-400">Photo Coming Soon</p>
+            {team.map((doctor, i) => (
+              <Reveal key={doctor.name} delay={i * 0.1}>
+                <div
+                  data-testid={`card-doctor-${i}`}
+                  className="bg-white rounded-2xl overflow-hidden border border-slate-200/70 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 h-full"
+                >
+                  <div className="bg-gradient-to-br from-slate-100 to-slate-200 h-48 flex items-center justify-center bg-grid">
+                    <p className="text-xs font-medium text-slate-400">Photo Coming Soon</p>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-base font-bold text-slate-900 font-display">{doctor.name}</h3>
+                    <p className="text-primary text-sm font-medium mb-2">{doctor.title}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{doctor.bio}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-slate-900 font-display">{doctor.name}</h3>
-                  <p className="text-primary text-sm font-medium mb-2">{doctor.title}</p>
-                  <p className="text-slate-500 text-sm leading-relaxed">{doctor.bio}</p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-slate-50 border-t border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mb-4">
+      <section className="py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-dark opacity-50" />
+        <div className="glow-blob bg-primary/50 w-[460px] h-[460px] -top-32 left-1/2 -translate-x-1/2" />
+        <Reveal className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
+          <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-4">
             Ready to meet our team?
           </h2>
-          <p className="text-slate-500 text-lg mb-8">
+          <p className="text-slate-300 text-lg mb-8">
             Schedule your consultation and experience the AMP Oral Surgery difference firsthand.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-contact-about">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-contact-about">
               <Link href="/contact">
                 Get in Touch <ArrowRight className="ml-1.5" size={16} />
               </Link>
             </Button>
-            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-white text-slate-900 hover:bg-slate-100">
               <Link href="/procedures">Our Procedures</Link>
             </Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

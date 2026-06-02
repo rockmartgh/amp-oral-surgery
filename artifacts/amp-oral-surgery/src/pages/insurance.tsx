@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Phone, CreditCard, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/reception-area.png";
 
 const insuranceProviders = [
@@ -51,11 +52,13 @@ export default function Insurance() {
       <title>Insurance & Billing | AMP Oral Surgery</title>
 
       {/* Hero — split layout */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden relative">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="glow-blob bg-primary/20 w-80 h-80 -top-20 right-0" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal>
+              <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
                 Billing & Coverage
               </span>
               <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
@@ -65,17 +68,20 @@ export default function Insurance() {
                 We work with most major dental and medical insurance plans and offer flexible payment
                 options to make your care as affordable as possible.
               </p>
-              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+              <Button asChild className="rounded-full font-semibold px-6 mt-8 shadow-glow-soft hover:shadow-glow transition-shadow" size="lg">
                 <Link href="/contact">Contact Our Billing Team</Link>
               </Button>
-            </div>
-            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
-              <img
-                src={receptionImg}
-                alt="AMP Oral Surgery reception"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            </Reveal>
+            <Reveal delay={0.15} className="relative">
+              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl border-2 border-primary/20 hidden md:block" />
+              <div className="rounded-2xl overflow-hidden aspect-video ring-frame relative">
+                <img
+                  src={receptionImg}
+                  alt="AMP Oral Surgery reception"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -84,8 +90,8 @@ export default function Insurance() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            <Reveal>
+              <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
                 Coverage
               </span>
               <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-5">
@@ -106,7 +112,7 @@ export default function Insurance() {
                   <div
                     key={provider}
                     data-testid={`item-insurance-${i}`}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2"
                   >
                     <CheckCircle2 className="text-primary flex-shrink-0" size={15} />
                     <span className="text-slate-600 text-sm">{provider}</span>
@@ -116,12 +122,14 @@ export default function Insurance() {
               <p className="text-slate-400 text-xs mt-5 italic">
                 Don't see your plan listed? Contact us — we may still be able to work with your provider.
               </p>
-            </div>
+            </Reveal>
 
-            <div className="space-y-5">
-              <div className="bg-blue-50 border border-blue-100 rounded-xl p-7">
+            <Reveal delay={0.15} className="space-y-5">
+              <div className="bg-white border border-blue-100 rounded-2xl p-7 shadow-soft">
                 <div className="flex items-center gap-3 mb-3">
-                  <CreditCard className="text-primary" size={20} />
+                  <div className="bg-gradient-to-br from-primary to-accent text-white w-9 h-9 rounded-lg flex items-center justify-center shadow-glow-soft">
+                    <CreditCard size={17} />
+                  </div>
                   <h3 className="text-base font-bold text-slate-900 font-display">
                     Understanding Your Benefits
                   </h3>
@@ -146,9 +154,11 @@ export default function Insurance() {
                 </ul>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-xl p-7">
+              <div className="bg-white border border-slate-200/70 rounded-2xl p-7 shadow-soft">
                 <div className="flex items-center gap-3 mb-3">
-                  <Phone className="text-primary" size={20} />
+                  <div className="bg-gradient-to-br from-primary to-accent text-white w-9 h-9 rounded-lg flex items-center justify-center shadow-glow-soft">
+                    <Phone size={17} />
+                  </div>
                   <h3 className="text-base font-bold text-slate-900 font-display">
                     Questions About Your Coverage?
                   </h3>
@@ -160,16 +170,17 @@ export default function Insurance() {
                 <p className="font-bold text-slate-900">(555) 867-5309</p>
                 <p className="text-slate-400 text-xs mt-1">Monday – Friday, 8:00 AM – 5:00 PM</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Payment Options */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+      <section className="py-20 bg-slate-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <Reveal className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
               Financial Options
             </span>
             <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">
@@ -178,43 +189,47 @@ export default function Insurance() {
             <p className="text-slate-500">
               We believe cost should never be a barrier to quality oral health care.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {paymentOptions.map((opt, i) => (
-              <div
-                key={opt.title}
-                data-testid={`card-payment-${i}`}
-                className="bg-white rounded-xl p-7 border border-slate-200 hover:shadow-sm transition-all"
-              >
-                <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{opt.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{opt.description}</p>
-              </div>
+              <Reveal key={opt.title} delay={(i % 2) * 0.1}>
+                <div
+                  data-testid={`card-payment-${i}`}
+                  className="bg-white rounded-2xl p-7 border border-slate-200/70 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 h-full group"
+                >
+                  <div className="w-1.5 h-8 rounded-full bg-gradient-to-b from-primary to-accent mb-4 group-hover:h-10 transition-all" />
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{opt.title}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm">{opt.description}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mb-4">
+      <section className="py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-dark opacity-50" />
+        <div className="glow-blob bg-primary/50 w-[460px] h-[460px] -top-32 left-1/2 -translate-x-1/2" />
+        <Reveal className="container mx-auto px-4 lg:px-8 text-center max-w-3xl relative">
+          <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-4">
             Questions about billing or coverage?
           </h2>
-          <p className="text-slate-500 text-lg mb-8">
+          <p className="text-slate-300 text-lg mb-8">
             Our team is ready to help you understand your options. Reach out today.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-contact-insurance">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-contact-insurance">
               <Link href="/contact">
                 Contact Us <ArrowRight className="ml-1.5" size={16} />
               </Link>
             </Button>
-            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-white text-slate-900 hover:bg-slate-100">
               <Link href="/new-patients">New Patient Info</Link>
             </Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );
