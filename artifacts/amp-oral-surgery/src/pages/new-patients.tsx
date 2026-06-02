@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ClipboardList, Phone, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
+import receptionImg from "@assets/reception-area.png";
+import consultationImg from "@assets/consultation.png";
 
 const whatToBring = [
   "Photo ID (driver's license or passport)",
@@ -43,19 +45,33 @@ export default function NewPatients() {
     <div className="flex flex-col w-full">
       <title>New Patients | AMP Oral Surgery</title>
 
-      {/* Hero */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16">
+      {/* Hero — split layout */}
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
-            Welcome
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
-            New Patient Information
-          </h1>
-          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl">
-            We're glad you've chosen AMP Oral Surgery. Here's everything you need to know to make
-            your first visit as smooth and comfortable as possible.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                Welcome
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
+                New Patient Information
+              </h1>
+              <p className="text-slate-500 text-lg leading-relaxed">
+                We're glad you've chosen AMP Oral Surgery. Here's everything you need to know to make
+                your first visit as smooth and comfortable as possible.
+              </p>
+              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+                <Link href="/contact">Request an Appointment</Link>
+              </Button>
+            </div>
+            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
+              <img
+                src={receptionImg}
+                alt="AMP Oral Surgery welcoming reception"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -128,7 +144,7 @@ export default function NewPatients() {
                 <p className="text-slate-600 text-sm leading-relaxed mb-3">
                   We will email your new patient intake forms before your appointment. Please
                   complete and return them at least 24 hours in advance so our team can review
-                  your medical and dental history ahead of your visit.
+                  your medical and dental history.
                 </p>
                 <p className="text-slate-400 text-xs italic">
                   If you haven't received your forms, please call our office and we'll resend them.
@@ -178,24 +194,37 @@ export default function NewPatients() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Image + CTA */}
       <section className="py-20 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mb-4">
-            Ready to schedule your first appointment?
-          </h2>
-          <p className="text-slate-500 text-lg mb-8">
-            We're accepting new patients and would love to meet you. Contact us today.
-          </p>
-          <Button
-            size="lg"
-            asChild
-            className="font-medium px-6 gap-1.5"
-          >
-            <Link href="/contact" data-testid="button-schedule-newpatient">
-              Request an Appointment <ArrowRight size={16} />
-            </Link>
-          </Button>
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
+              <img
+                src={consultationImg}
+                alt="Welcoming consultation"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mb-4">
+                Ready to schedule your first appointment?
+              </h2>
+              <p className="text-slate-500 text-lg mb-8 leading-relaxed">
+                We're accepting new patients and would love to meet you. Contact our office today —
+                our team will guide you through every step.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-schedule-newpatient">
+                  <Link href="/contact">
+                    Request an Appointment <ArrowRight className="ml-1.5" size={16} />
+                  </Link>
+                </Button>
+                <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800">
+                  <Link href="/insurance">Insurance & Billing</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
+import proceduresRoomImg from "@assets/procedures-room.png";
+import consultationImg from "@assets/consultation.png";
 
 const procedures = [
   {
@@ -64,20 +66,34 @@ export default function Procedures() {
     <div className="flex flex-col w-full">
       <title>Procedures | AMP Oral Surgery</title>
 
-      {/* Page Hero */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16">
+      {/* Page Hero — split layout */}
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
-            What We Offer
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
-            Our Procedures
-          </h1>
-          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl">
-            From complex reconstructive surgery to routine extractions, AMP Oral Surgery provides
-            the full spectrum of oral and maxillofacial care — delivered with precision, technology,
-            and genuine compassion.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                What We Offer
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
+                Our Procedures
+              </h1>
+              <p className="text-slate-500 text-lg leading-relaxed max-w-xl">
+                From complex reconstructive surgery to routine extractions, AMP Oral Surgery provides
+                the full spectrum of oral and maxillofacial care — delivered with precision, technology,
+                and genuine compassion.
+              </p>
+              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+                <Link href="/contact">Request a Consultation</Link>
+              </Button>
+            </div>
+            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
+              <img
+                src={proceduresRoomImg}
+                alt="Modern oral surgery suite"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -107,25 +123,40 @@ export default function Procedures() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-slate-50 border-t border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mb-4">
-            Have questions about a procedure?
-          </h2>
-          <p className="text-slate-500 text-lg mb-8">
-            Contact our office to schedule a consultation. We'll evaluate your needs and walk you
-            through the best treatment options.
-          </p>
-          <Button
-            size="lg"
-            asChild
-            className="font-medium px-6 gap-1.5"
-          >
-            <Link href="/contact" data-testid="button-request-consultation">
-              Request a Consultation <ArrowRight size={16} />
-            </Link>
-          </Button>
+      {/* Mid-page image + CTA strip */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
+              <img
+                src={consultationImg}
+                alt="Surgeon consulting with patient"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                Your Care
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-display text-slate-900 mt-4 mb-4">
+                Have questions about a procedure?
+              </h2>
+              <p className="text-slate-500 text-lg mb-8 leading-relaxed">
+                Contact our office to schedule a consultation. We'll evaluate your needs and walk you
+                through the best treatment options — with no pressure, just clarity.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-request-consultation">
+                  <Link href="/contact">
+                    Request a Consultation <ArrowRight className="ml-1.5" size={16} />
+                  </Link>
+                </Button>
+                <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800">
+                  <Link href="/new-patients">New Patient Info</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

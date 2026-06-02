@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Phone, CreditCard, ArrowRight, CheckCircle2 } from "lucide-react";
+import receptionImg from "@assets/reception-area.png";
 
 const insuranceProviders = [
   "Aetna",
@@ -49,19 +50,33 @@ export default function Insurance() {
     <div className="flex flex-col w-full">
       <title>Insurance & Billing | AMP Oral Surgery</title>
 
-      {/* Hero */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16">
+      {/* Hero — split layout */}
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
-            Billing & Coverage
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
-            Insurance & Financing
-          </h1>
-          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl">
-            We work with most major dental and medical insurance plans and offer flexible payment
-            options to make your care as affordable as possible.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                Billing & Coverage
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
+                Insurance & Financing
+              </h1>
+              <p className="text-slate-500 text-lg leading-relaxed">
+                We work with most major dental and medical insurance plans and offer flexible payment
+                options to make your care as affordable as possible.
+              </p>
+              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+                <Link href="/contact">Contact Our Billing Team</Link>
+              </Button>
+            </div>
+            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
+              <img
+                src={receptionImg}
+                alt="AMP Oral Surgery reception"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -113,7 +128,7 @@ export default function Insurance() {
                 </div>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
                   Oral surgery may be covered under your dental plan, your medical plan, or both —
-                  depending on the nature of your procedure. To get the most out of your coverage:
+                  depending on the nature of your procedure.
                 </p>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-start gap-2">
@@ -161,8 +176,7 @@ export default function Insurance() {
               Flexible Payment Solutions
             </h2>
             <p className="text-slate-500">
-              We believe cost should never be a barrier to quality oral health care. We offer
-              multiple ways to make treatment accessible.
+              We believe cost should never be a barrier to quality oral health care.
             </p>
           </div>
 
@@ -190,15 +204,16 @@ export default function Insurance() {
           <p className="text-slate-500 text-lg mb-8">
             Our team is ready to help you understand your options. Reach out today.
           </p>
-          <Button
-            size="lg"
-            asChild
-            className="font-medium px-6 gap-1.5"
-          >
-            <Link href="/contact" data-testid="button-contact-insurance">
-              Contact Us <ArrowRight size={16} />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-contact-insurance">
+              <Link href="/contact">
+                Contact Us <ArrowRight className="ml-1.5" size={16} />
+              </Link>
+            </Button>
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800">
+              <Link href="/new-patients">New Patient Info</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>

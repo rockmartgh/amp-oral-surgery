@@ -98,16 +98,15 @@ export default function Home() {
               <Button
                 size="lg"
                 asChild
-                className="font-semibold px-6"
+                className="rounded-full font-semibold px-7"
                 data-testid="button-hero-request"
               >
                 <Link href="/contact">Request an Appointment</Link>
               </Button>
               <Button
                 size="lg"
-                variant="outline"
                 asChild
-                className="font-semibold px-6 bg-white/10 border-white/30 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm"
+                className="rounded-full font-semibold px-7 bg-white text-slate-900 hover:bg-slate-100"
                 data-testid="button-hero-procedures"
               >
                 <Link href="/procedures">
@@ -150,7 +149,6 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: text */}
             <div className="space-y-8">
               <div>
                 <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
@@ -182,11 +180,11 @@ export default function Home() {
 
               <Button
                 asChild
-                className="font-medium gap-1.5"
+                className="rounded-full font-semibold px-6"
                 data-testid="button-about-us"
               >
                 <Link href="/about">
-                  Meet Our Team <ArrowRight size={15} />
+                  Meet Our Team <ArrowRight className="ml-1.5" size={15} />
                 </Link>
               </Button>
             </div>
@@ -194,18 +192,10 @@ export default function Home() {
             {/* Right: image collage */}
             <div className="relative grid grid-cols-2 gap-4 h-[500px]">
               <div className="rounded-2xl overflow-hidden row-span-2">
-                <img
-                  src={heroImg}
-                  alt="Oral surgery care"
-                  className="w-full h-full object-cover"
-                />
+                <img src={heroImg} alt="Oral surgery care" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-2xl overflow-hidden">
-                <img
-                  src={aboutImg}
-                  alt="Patient consultation"
-                  className="w-full h-full object-cover object-top"
-                />
+                <img src={aboutImg} alt="Patient consultation" className="w-full h-full object-cover object-top" />
               </div>
               <div className="rounded-2xl bg-slate-900 flex items-center justify-center p-6 text-center text-white">
                 <div>
@@ -231,13 +221,12 @@ export default function Home() {
               </h2>
             </div>
             <Button
-              variant="outline"
               asChild
-              className="flex-shrink-0 font-medium gap-1.5"
+              className="rounded-full flex-shrink-0 bg-slate-900 text-white hover:bg-slate-800 font-semibold px-6"
               data-testid="button-view-all-procedures"
             >
               <Link href="/procedures">
-                View All <ArrowRight size={15} />
+                View All <ArrowRight className="ml-1.5" size={15} />
               </Link>
             </Button>
           </div>
@@ -253,10 +242,7 @@ export default function Home() {
                 <span className="font-medium text-slate-800 group-hover:text-primary transition-colors text-sm">
                   {proc.name}
                 </span>
-                <ArrowRight
-                  size={16}
-                  className="text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all"
-                />
+                <ArrowRight size={16} className="text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
               </Link>
             ))}
           </div>
@@ -267,14 +253,9 @@ export default function Home() {
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
             <div className="relative">
               <div className="rounded-2xl overflow-hidden aspect-[4/5] max-h-[580px]">
-                <img
-                  src={aboutImg}
-                  alt="Surgical team at AMP Oral Surgery"
-                  className="w-full h-full object-cover"
-                />
+                <img src={aboutImg} alt="Surgical team at AMP Oral Surgery" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-5 -right-5 bg-slate-900 rounded-xl p-5 text-white shadow-lg max-w-[200px]">
                 <p className="text-xs text-slate-400 mb-1">Trusted by</p>
@@ -283,7 +264,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Text */}
             <div className="space-y-5">
               <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
                 About AMP Oral Surgery
@@ -293,29 +273,17 @@ export default function Home() {
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
                 AMP Oral Surgery was founded to bring fellowship-trained, hospital-level expertise
-                to patients in a welcoming, community-focused environment. Our board-certified
-                surgeons have decades of combined experience across the full spectrum of oral and
-                maxillofacial surgery.
+                to patients in a welcoming, community-focused environment.
               </p>
               <p className="text-slate-500 leading-relaxed text-sm">
                 We take time with every patient — to listen, explain, and build a treatment plan
-                that fits your needs, your timeline, and your life. You will never feel like a
-                number here.
+                that fits your needs, your timeline, and your life.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <Button
-                  asChild
-                  className="font-medium"
-                  data-testid="button-learn-more-about"
-                >
+                <Button asChild className="rounded-full font-semibold px-6" data-testid="button-learn-more-about">
                   <Link href="/about">Learn More About Us</Link>
                 </Button>
-                <Button
-                  variant="outline"
-                  asChild
-                  className="font-medium"
-                  data-testid="button-new-patients"
-                >
+                <Button asChild className="rounded-full font-semibold px-6 bg-slate-900 text-white hover:bg-slate-800" data-testid="button-new-patients">
                   <Link href="/new-patients">New Patient Info</Link>
                 </Button>
               </div>
@@ -351,9 +319,7 @@ export default function Home() {
                     <Star key={j} size={14} className="text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                <p className="text-slate-600 leading-relaxed text-sm italic mb-6">
-                  "{t.text}"
-                </p>
+                <p className="text-slate-600 leading-relaxed text-sm italic mb-6">"{t.text}"</p>
                 <div className="flex items-center gap-3 border-t border-slate-100 pt-5">
                   <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-bold text-xs font-display">
                     {t.name.charAt(0)}
@@ -382,28 +348,14 @@ export default function Home() {
             Contact our office today to schedule your consultation and discuss your treatment options.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              size="lg"
-              asChild
-              className="font-medium px-6"
-              data-testid="button-cta-schedule"
-            >
+            <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-cta-schedule">
               <Link href="/contact">Schedule a Consultation</Link>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="font-medium px-6"
-              data-testid="button-cta-procedures"
-            >
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800" data-testid="button-cta-procedures">
               <Link href="/procedures">View Our Procedures</Link>
             </Button>
           </div>
-          <a
-            href="tel:5558675309"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors text-sm mt-6"
-          >
+          <a href="tel:5558675309" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors text-sm mt-6">
             <Phone size={14} />
             <span>Or call us at (555) 867-5309</span>
           </a>

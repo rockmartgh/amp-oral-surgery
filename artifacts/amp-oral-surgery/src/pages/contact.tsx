@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, MapPin, Mail, CheckCircle2 } from "lucide-react";
+import receptionImg from "@assets/reception-area.png";
 
 const contactInfo = [
   {
@@ -54,19 +55,21 @@ export default function Contact() {
     <div className="flex flex-col w-full">
       <title>Contact Us | AMP Oral Surgery</title>
 
-      {/* Hero */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+      {/* Hero — image banner */}
+      <section className="relative h-64 overflow-hidden">
+        <img
+          src={receptionImg}
+          alt="AMP Oral Surgery office"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 h-full flex flex-col justify-center">
+          <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-3 w-fit">
             Get in Touch
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold font-display text-white leading-tight">
             Contact Us
           </h1>
-          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl">
-            Have a question, need to schedule an appointment, or want to learn more about our
-            services? We'd love to hear from you.
-          </p>
         </div>
       </section>
 
@@ -78,7 +81,7 @@ export default function Contact() {
             {/* Left: Info */}
             <div className="space-y-10">
               <div>
-                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6 block w-fit">
+                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-5 block w-fit">
                   Reach Us
                 </span>
                 <div className="space-y-6 mt-4">
@@ -153,45 +156,17 @@ export default function Contact() {
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        required
-                        placeholder="Jane Smith"
-                        value={form.name}
-                        onChange={handleChange}
-                        data-testid="input-name"
-                        className="bg-white"
-                      />
+                      <Input id="name" name="name" required placeholder="Jane Smith" value={form.name} onChange={handleChange} data-testid="input-name" className="bg-white" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="(555) 000-0000"
-                        value={form.phone}
-                        onChange={handleChange}
-                        data-testid="input-phone"
-                        className="bg-white"
-                      />
+                      <Input id="phone" name="phone" type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={handleChange} data-testid="input-phone" className="bg-white" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-sm font-medium text-slate-700">Email Address</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="jane@example.com"
-                      value={form.email}
-                      onChange={handleChange}
-                      data-testid="input-email"
-                      className="bg-white"
-                    />
+                    <Input id="email" name="email" type="email" required placeholder="jane@example.com" value={form.email} onChange={handleChange} data-testid="input-email" className="bg-white" />
                   </div>
 
                   <div className="space-y-2">
@@ -212,31 +187,15 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-sm font-medium text-slate-700">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      placeholder="Tell us how we can help you..."
-                      value={form.message}
-                      onChange={handleChange}
-                      data-testid="textarea-message"
-                      className="bg-white"
-                    />
+                    <Textarea id="message" name="message" required rows={5} placeholder="Tell us how we can help you..." value={form.message} onChange={handleChange} data-testid="textarea-message" className="bg-white" />
                   </div>
 
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full font-medium"
-                    data-testid="button-submit-contact"
-                  >
+                  <Button type="submit" size="lg" className="w-full rounded-full font-semibold" data-testid="button-submit-contact">
                     Send Message
                   </Button>
 
                   <p className="text-xs text-slate-400 text-center">
-                    We typically respond within 1 business day. For urgent matters, please call us
-                    directly at (555) 867-5309.
+                    We typically respond within 1 business day. For urgent matters, please call us directly at (555) 867-5309.
                   </p>
                 </form>
               )}

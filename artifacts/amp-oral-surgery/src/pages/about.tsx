@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Award, BookOpen, Users, ArrowRight } from "lucide-react";
+import aboutTeamImg from "@assets/about-team.png";
+import consultationImg from "@assets/consultation.png";
 
 const values = [
   {
@@ -28,19 +30,33 @@ export default function About() {
     <div className="flex flex-col w-full">
       <title>About Us | AMP Oral Surgery</title>
 
-      {/* Hero */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16">
+      {/* Hero — split layout */}
+      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
-            Our Story
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
-            About AMP Oral Surgery
-          </h1>
-          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl">
-            Founded on the belief that exceptional surgical care and genuine compassion are
-            inseparable, AMP Oral Surgery has served our community with integrity, skill, and heart.
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                Our Story
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
+                About AMP Oral Surgery
+              </h1>
+              <p className="text-slate-500 text-lg leading-relaxed">
+                Founded on the belief that exceptional surgical care and genuine compassion are
+                inseparable, AMP Oral Surgery has served our community with integrity, skill, and heart.
+              </p>
+              <Button asChild className="rounded-full font-semibold px-6 mt-8" size="lg">
+                <Link href="/contact">Schedule a Consultation</Link>
+              </Button>
+            </div>
+            <div className="rounded-2xl overflow-hidden aspect-video shadow-md">
+              <img
+                src={aboutTeamImg}
+                alt="AMP Oral Surgery team"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -63,8 +79,7 @@ export default function About() {
               <p className="text-slate-500 leading-relaxed text-sm">
                 We understand that undergoing surgery can be stressful. That's why every member of
                 our team — from our front desk staff to our board-certified surgeons — is dedicated
-                to making your experience as smooth and reassuring as possible. We explain every step,
-                answer every question, and never rush you through a decision.
+                to making your experience as smooth and reassuring as possible.
               </p>
               <p className="text-slate-500 leading-relaxed text-sm">
                 Whether you're coming in for a wisdom tooth removal or a complex jaw reconstruction,
@@ -73,11 +88,12 @@ export default function About() {
               </p>
             </div>
             <div className="relative">
-              <div className="bg-slate-100 rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center">
-                <div className="text-center text-slate-400 p-8">
-                  <p className="font-medium text-slate-500">Practice Photo</p>
-                  <p className="text-sm mt-1">(Photo coming soon)</p>
-                </div>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
+                <img
+                  src={consultationImg}
+                  alt="Surgeon with patient"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-5 -left-5 bg-primary text-white rounded-xl p-5 shadow-lg">
                 <p className="text-3xl font-bold font-display">15+</p>
@@ -154,10 +170,8 @@ export default function About() {
                 data-testid={`card-doctor-${i}`}
                 className="bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-sm transition-all"
               >
-                <div className="bg-slate-100 h-44 flex items-center justify-center">
-                  <div className="text-center text-slate-400">
-                    <p className="text-xs font-medium">Photo Coming Soon</p>
-                  </div>
+                <div className="bg-slate-100 h-48 flex items-center justify-center">
+                  <p className="text-xs font-medium text-slate-400">Photo Coming Soon</p>
                 </div>
                 <div className="p-6">
                   <h3 className="text-base font-bold text-slate-900 font-display">{doctor.name}</h3>
@@ -179,15 +193,16 @@ export default function About() {
           <p className="text-slate-500 text-lg mb-8">
             Schedule your consultation and experience the AMP Oral Surgery difference firsthand.
           </p>
-          <Button
-            size="lg"
-            asChild
-            className="font-medium px-6 gap-1.5"
-          >
-            <Link href="/contact" data-testid="button-contact-about">
-              Get in Touch <ArrowRight size={16} />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button size="lg" asChild className="rounded-full font-semibold px-7" data-testid="button-contact-about">
+              <Link href="/contact">
+                Get in Touch <ArrowRight className="ml-1.5" size={16} />
+              </Link>
+            </Button>
+            <Button size="lg" asChild className="rounded-full font-semibold px-7 bg-slate-900 text-white hover:bg-slate-800">
+              <Link href="/procedures">Our Procedures</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>

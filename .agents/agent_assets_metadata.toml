@@ -12,6 +12,24 @@ uri = "file://attached_assets/about-team.png"
 type = "image"
 title = "surgery team about"
 
+[[generated]]
+id = "ITVYP_8Tiq4mr9Hmi0ilq"
+uri = "file://attached_assets/procedures-room.png"
+type = "image"
+title = "procedures surgery room"
+
+[[generated]]
+id = "HtQ3gUxReJi7J6dy6Fawx"
+uri = "file://attached_assets/reception-area.png"
+type = "image"
+title = "clinic reception welcome"
+
+[[generated]]
+id = "YSBzMZM74saOuwJa5JRxC"
+uri = "file://attached_assets/consultation.png"
+type = "image"
+title = "doctor patient consultation"
+
 [[outputs]]
 id = "sFIfe_HBFWb8mA_NAvWVM"
 uri = "file://artifacts/amp-oral-surgery/public/hero-bg.jpg"
