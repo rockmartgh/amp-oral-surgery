@@ -1,0 +1,14 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "sFIfe_HBFWb8mA_NAvWVM"
+uri = "file://artifacts/amp-oral-surgery/public/hero-bg.jpg"
+type = "image"
+title = "modern professional dental surgery clinic interior clean bright"
+
+[[outputs]]
+id = "0DBOsLk1uFER-hgqmJQwN"
+uri = "file://artifacts/amp-oral-surgery/public/team.jpg"
+type = "image"
+title = "friendly professional team of doctors oral surgeons smiling in modern clinic"

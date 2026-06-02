@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "AMP Oral Surgery"
+version = "1.0.0"
+id = "artifacts/amp-oral-surgery"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25045
+
+[services.development]
+run = "pnpm --filter @workspace/amp-oral-surgery run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/amp-oral-surgery", "run", "build" ]
+publicDir = "artifacts/amp-oral-surgery/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25045"
+BASE_PATH = "/"
