@@ -94,9 +94,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 pt-5 border-t border-slate-800/40 flex items-center justify-center gap-2 text-xs text-slate-600">
-          <span>Designed and Powered by</span>
-          <img src={foxpointLogo} alt="FoxPoint Web Designs" className="h-4" />
+        <div className="mt-6 pt-5 border-t border-slate-800/40 flex items-center justify-center text-xs text-slate-600">
+          <a
+            href="https://foxpointwd.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <img src={foxpointLogo} alt="FoxPoint Web Design" className="h-4" />
+            <span>Designed and Powered by FoxPoint Web Design</span>
+          </a>
         </div>
       </div>
     </footer>
