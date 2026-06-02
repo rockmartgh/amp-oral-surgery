@@ -14,6 +14,23 @@ import PatientResources from "@/pages/patient-resources";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+// Images used on pages other than home — resolved by Vite at build time
+import _officeLounge from "@assets/office-lounge.jpg";
+import _officeConsultation from "@assets/office-consultation.jpg";
+import _officeProcedure from "@assets/office-procedure-suite.jpg";
+import _officeTeam from "@assets/office-team.jpg";
+import _drElmore from "@assets/image_1780390665346.jpg";
+import _videoPoster from "@assets/Image-51_1780387953861.jpg";
+
+const PREFETCH_IMAGES = [
+  _officeLounge,
+  _officeConsultation,
+  _officeProcedure,
+  _officeTeam,
+  _drElmore,
+  _videoPoster,
+];
+
 const queryClient = new QueryClient();
 
 function ScrollToTop() {
@@ -22,10 +39,24 @@ function ScrollToTop() {
   return null;
 }
 
+function ImagePreloader() {
+  useEffect(() => {
+    const load = () => PREFETCH_IMAGES.forEach((src) => { new Image().src = src; });
+    if ("requestIdleCallback" in window) {
+      (window as Window & { requestIdleCallback: (cb: () => void) => void })
+        .requestIdleCallback(load);
+    } else {
+      setTimeout(load, 300);
+    }
+  }, []);
+  return null;
+}
+
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
+      <ImagePreloader />
       <Navbar />
       <main className="flex-1">
         <Switch>
