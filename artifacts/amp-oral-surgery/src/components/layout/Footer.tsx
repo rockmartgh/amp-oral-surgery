@@ -36,7 +36,18 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="text-primary shrink-0 mt-0.5" size={18} />
-                <span>3861 Avalon Park E Blvd<br/>Orlando, FL 32828</span>
+                <span>
+                  <span className="block text-white font-semibold text-xs uppercase tracking-wide mb-0.5">Orlando — Main Office</span>
+                  3861 Avalon Park E Blvd<br/>Orlando, FL 32828
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="text-primary shrink-0 mt-0.5" size={18} />
+                <span>
+                  <span className="block text-white font-semibold text-xs uppercase tracking-wide mb-0.5">Clermont — Satellite</span>
+                  2607 S US Highway 27, Suite 102<br/>Clermont, FL 34711
+                  <span className="block text-slate-500 text-xs mt-0.5">By appointment only</span>
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-primary shrink-0" size={18} />

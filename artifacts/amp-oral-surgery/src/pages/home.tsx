@@ -46,7 +46,7 @@ function VideoPlayer({ src, poster }: { src: string; poster: string }) {
 const stats = [
   { value: "15+", label: "Years of Experience" },
   { value: "5,000+", label: "Patients Treated" },
-  { value: "4.9★", label: "Average Patient Rating" },
+  { value: "4.9", label: "Average Patient Rating" },
   { value: "3", label: "Board-Certified Surgeons" },
 ];
 

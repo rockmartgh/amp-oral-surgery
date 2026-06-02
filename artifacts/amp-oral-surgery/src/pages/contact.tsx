@@ -7,19 +7,37 @@ import { Phone, MapPin, Mail, CheckCircle2, Clock, Instagram, ArrowRight, Naviga
 import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/office-lounge.jpg";
 
-const MAPS_QUERY = "3861 Avalon Park E Blvd, Orlando, FL 32828";
-const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAPS_QUERY)}`;
-const MAPS_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(MAPS_QUERY)}&output=embed`;
+const mapsLink = (q: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const mapsEmbed = (q: string) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
 const INSTAGRAM_URL = "https://www.instagram.com/amporalsurgery/?hl=en";
+
+const locations = [
+  {
+    name: "Orlando",
+    tag: "Main Office",
+    address: "3861 Avalon Park E Blvd\nOrlando, FL 32828",
+    query: "3861 Avalon Park E Blvd, Orlando, FL 32828",
+    note: null as string | null,
+  },
+  {
+    name: "Clermont",
+    tag: "Satellite Location",
+    address: "2607 S US Highway 27, Suite 102\nClermont, FL 34711",
+    query: "2607 S US Highway 27, Suite 102, Clermont, FL 34711",
+    note: "By appointment only" as string | null,
+  },
+];
 
 const contactCards = [
   {
     icon: MapPin,
     label: "Visit Us",
-    value: "3861 Avalon Park E Blvd\nOrlando, FL 32828",
-    cta: "Get Directions",
-    href: MAPS_LINK,
-    external: true,
+    value: "Orlando & Clermont, FL",
+    cta: "View Locations",
+    href: "#locations",
+    external: false,
   },
   {
     icon: Phone,
@@ -33,7 +51,7 @@ const contactCards = [
     icon: Mail,
     label: "Email Us",
     value: "info@ampomfs.com",
-    cta: "Replies within 1 business day",
+    cta: "Send us a note",
     href: "mailto:info@ampomfs.com",
     external: false,
   },
@@ -154,8 +172,8 @@ export default function Contact() {
                       Message Received!
                     </h3>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                      Thank you for reaching out. A member of our team will contact you within 1
-                      business day to follow up.
+                      Thank you for reaching out. A member of our team will contact you shortly to
+                      follow up.
                     </p>
                   </div>
                 ) : (
@@ -202,7 +220,7 @@ export default function Contact() {
                     </Button>
 
                     <p className="text-xs text-slate-400 text-center">
-                      We typically respond within 1 business day. For urgent matters, please call us directly at 407-544-0139.
+                      For urgent matters, please call us directly at 407-544-0139.
                     </p>
                   </form>
                 )}
@@ -267,37 +285,62 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map */}
-      <section className="pb-20 bg-white">
+      {/* Locations */}
+      <section id="locations" className="pb-20 bg-white scroll-mt-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <Reveal>
-            <div className="rounded-3xl overflow-hidden border border-slate-200/70 shadow-lifted">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 py-5 bg-white border-b border-slate-100">
-                <div className="flex items-center gap-3">
-                  <div className="bg-blue-50 text-primary w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
-                    <MapPin size={18} />
+          <Reveal className="text-center max-w-2xl mx-auto mb-10">
+            <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
+              Our Locations
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-bold font-display text-slate-900 mt-4">
+              Two Convenient Locations
+            </h2>
+            <p className="text-slate-500 mt-3 leading-relaxed">
+              Serving the greater Orlando area from our main office in Avalon Park and our satellite
+              location in Clermont.
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {locations.map((loc, i) => (
+              <Reveal key={loc.name} delay={i * 0.1}>
+                <div className="rounded-3xl overflow-hidden border border-slate-200/70 shadow-lifted h-full flex flex-col">
+                  <div className="flex items-start gap-3 px-6 py-5 bg-white border-b border-slate-100">
+                    <div className="bg-blue-50 text-primary w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
+                      <MapPin size={18} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <p className="font-display font-bold text-slate-900">{loc.name}</p>
+                        <span className="text-[10px] font-semibold uppercase tracking-wide text-primary bg-blue-50 rounded-full px-2 py-0.5">
+                          {loc.tag}
+                        </span>
+                      </div>
+                      <p className="text-sm text-slate-500 whitespace-pre-line leading-snug mt-1">
+                        {loc.address}
+                      </p>
+                      {loc.note && <p className="text-xs text-slate-400 mt-1">{loc.note}</p>}
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-display font-bold text-slate-900">Our Location</p>
-                    <p className="text-sm text-slate-500">{MAPS_QUERY}</p>
+                  <iframe
+                    title={`AMP Oral Surgery ${loc.name} location map`}
+                    src={mapsEmbed(loc.query)}
+                    className="w-full h-[300px] border-0 grow"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                  <div className="px-6 py-4 bg-white border-t border-slate-100">
+                    <Button asChild variant="outline" className="rounded-full font-semibold w-full">
+                      <a href={mapsLink(loc.query)} target="_blank" rel="noopener noreferrer">
+                        <Navigation size={15} className="mr-1.5" /> Get Directions
+                      </a>
+                    </Button>
                   </div>
                 </div>
-                <Button asChild variant="outline" className="rounded-full font-semibold shrink-0">
-                  <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer">
-                    <Navigation size={15} className="mr-1.5" /> Get Directions
-                  </a>
-                </Button>
-              </div>
-              <iframe
-                title="AMP Oral Surgery location map"
-                src={MAPS_EMBED}
-                className="w-full h-[420px] border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-          </Reveal>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </div>
