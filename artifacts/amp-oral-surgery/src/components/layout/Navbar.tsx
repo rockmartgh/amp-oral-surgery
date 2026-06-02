@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, MapPin, Clock } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Menu, X, Phone, MapPin, Clock, ChevronDown, ArrowRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import logoPath from "@assets/amp-logo.png";
 
 const navLinks = [
@@ -13,12 +13,26 @@ const navLinks = [
   { name: "Contact", path: "/contact" },
 ];
 
+const procedureItems = [
+  "Dental Implants",
+  "Wisdom Teeth Removal",
+  "Bone Grafting",
+  "Corrective Jaw Surgery",
+  "Facial Trauma",
+  "Oral Pathology",
+  "Tooth Extractions",
+  "Platelet Rich Fibrin (PRF)",
+  "Cleft Lip & Palate",
+];
+
 const heroRoutes = navLinks.map((l) => l.path);
 
 export default function Navbar() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [procOpen, setProcOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -28,6 +42,14 @@ export default function Navbar() {
   }, []);
 
   const overHero = heroRoutes.includes(location) && !scrolled && !mobileMenuOpen;
+
+  function openProc() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setProcOpen(true);
+  }
+  function closeProc() {
+    closeTimer.current = setTimeout(() => setProcOpen(false), 130);
+  }
 
   return (
     <header
@@ -76,7 +98,7 @@ export default function Navbar() {
             src={logoPath}
             alt="AMP Oral Surgery"
             className={`h-9 w-auto object-contain transition-all ${
-              overHero ? "brightness-0 invert" : ""
+              overHero ? "brightness-0 invert" : "brightness-0"
             }`}
           />
           <span className="font-display font-bold text-base leading-tight hidden sm:block">
@@ -96,26 +118,78 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => {
             const active = location === link.path;
-            return (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`group relative py-2 text-sm font-medium tracking-wide transition-colors ${
-                  active
-                    ? overHero
-                      ? "text-white"
-                      : "text-primary"
-                    : overHero
-                      ? "text-white/75 hover:text-white"
-                      : "text-slate-600 hover:text-slate-900"
+            const linkClass = `group relative py-2 text-sm font-medium tracking-wide transition-colors ${
+              active
+                ? overHero ? "text-white" : "text-primary"
+                : overHero ? "text-white/75 hover:text-white" : "text-slate-600 hover:text-slate-900"
+            }`;
+            const underline = (
+              <span
+                className={`absolute left-0 -bottom-0.5 h-0.5 rounded-full bg-current transition-all duration-300 ${
+                  active ? "w-full" : "w-0 group-hover:w-full"
                 }`}
-              >
+              />
+            );
+
+            if (link.name === "Procedures") {
+              return (
+                <div
+                  key={link.path}
+                  className="relative"
+                  onMouseEnter={openProc}
+                  onMouseLeave={closeProc}
+                >
+                  <button className={`${linkClass} flex items-center gap-1`}>
+                    Procedures
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${procOpen ? "rotate-180" : ""}`}
+                    />
+                    {underline}
+                  </button>
+
+                  {procOpen && (
+                    <div
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[580px] bg-white rounded-2xl shadow-xl ring-1 ring-slate-200/60 p-3 z-50"
+                      onMouseEnter={openProc}
+                      onMouseLeave={closeProc}
+                    >
+                      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-200/60 rotate-45" />
+                      <div className="grid grid-cols-3 gap-1">
+                        {procedureItems.map((proc) => (
+                          <Link
+                            key={proc}
+                            href="/procedures"
+                            onClick={() => setProcOpen(false)}
+                            className="group/item flex items-center gap-2 px-3 py-2.5 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-primary text-sm font-medium transition-colors"
+                          >
+                            <ArrowRight
+                              size={12}
+                              className="text-slate-300 group-hover/item:text-primary shrink-0 transition-colors"
+                            />
+                            {proc}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="mt-2 pt-2 border-t border-slate-100 flex justify-center">
+                        <Link
+                          href="/procedures"
+                          onClick={() => setProcOpen(false)}
+                          className="flex items-center gap-1 text-xs text-primary font-semibold hover:underline"
+                        >
+                          View All Procedures <ArrowRight size={11} />
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <Link key={link.path} href={link.path} className={linkClass}>
                 {link.name}
-                <span
-                  className={`absolute left-0 -bottom-0.5 h-0.5 rounded-full bg-current transition-all duration-300 ${
-                    active ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
+                {underline}
               </Link>
             );
           })}
