@@ -331,7 +331,7 @@ export default function Contact() {
                     allowFullScreen
                   />
                   <div className="px-6 py-4 bg-white border-t border-slate-100">
-                    <Button asChild variant="outline" className="rounded-full font-semibold w-full">
+                    <Button asChild className="rounded-full font-semibold w-full bg-slate-900 text-white hover:bg-slate-800 border-0">
                       <a href={mapsLink(loc.query)} target="_blank" rel="noopener noreferrer">
                         <Navigation size={15} className="mr-1.5" /> Get Directions
                       </a>
