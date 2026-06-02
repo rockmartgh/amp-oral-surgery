@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, MapPin, Clock, Mail, CheckCircle2 } from "lucide-react";
+import { Phone, MapPin, Mail, CheckCircle2 } from "lucide-react";
 
 const contactInfo = [
   {
@@ -55,21 +55,18 @@ export default function Contact() {
       <title>Contact Us | AMP Oral Surgery</title>
 
       {/* Hero */}
-      <section className="bg-[#0B1A30] py-24 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-400 via-transparent to-transparent pointer-events-none"></div>
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <p className="text-blue-400 font-semibold tracking-widest text-xs uppercase mb-4">
-              Get in Touch
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold font-display leading-tight mb-6">
-              Contact Us
-            </h1>
-            <p className="text-slate-300 text-lg leading-relaxed max-w-2xl">
-              Have a question, need to schedule an appointment, or want to learn more about our
-              services? We'd love to hear from you.
-            </p>
-          </div>
+      <section className="bg-slate-50 border-b border-slate-200 py-16">
+        <div className="container mx-auto px-4 lg:px-8">
+          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+            Get in Touch
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
+            Contact Us
+          </h1>
+          <p className="text-slate-500 text-lg leading-relaxed max-w-2xl">
+            Have a question, need to schedule an appointment, or want to learn more about our
+            services? We'd love to hear from you.
+          </p>
         </div>
       </section>
 
@@ -81,20 +78,20 @@ export default function Contact() {
             {/* Left: Info */}
             <div className="space-y-10">
               <div>
-                <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase mb-6">
+                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6 block w-fit">
                   Reach Us
-                </p>
-                <div className="space-y-6">
+                </span>
+                <div className="space-y-6 mt-4">
                   {contactInfo.map((item) => (
                     <div key={item.label} className="flex items-start gap-4">
-                      <div className="bg-blue-100 text-primary w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <item.icon size={18} />
+                      <div className="bg-blue-50 text-primary w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <item.icon size={16} />
                       </div>
                       <div>
-                        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+                        <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
                           {item.label}
                         </p>
-                        <p className="text-slate-800 font-medium whitespace-pre-line leading-relaxed">
+                        <p className="text-slate-800 font-medium whitespace-pre-line leading-relaxed text-sm">
                           {item.value}
                         </p>
                       </div>
@@ -104,14 +101,14 @@ export default function Contact() {
               </div>
 
               <div>
-                <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase mb-6">
+                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-4 block w-fit">
                   Office Hours
-                </p>
-                <div className="bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden">
+                </span>
+                <div className="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden mt-4">
                   {hours.map((h, i) => (
                     <div
                       key={h.day}
-                      className={`flex justify-between items-center px-6 py-4 text-sm ${
+                      className={`flex justify-between items-center px-5 py-4 text-sm ${
                         i < hours.length - 1 ? "border-b border-slate-100" : ""
                       } ${h.time === "Closed" ? "text-slate-400" : "text-slate-700"}`}
                     >
@@ -123,28 +120,27 @@ export default function Contact() {
               </div>
 
               {/* Map placeholder */}
-              <div className="rounded-2xl overflow-hidden bg-slate-100 h-56 flex items-center justify-center text-slate-400 border border-slate-100">
+              <div className="rounded-xl overflow-hidden bg-slate-100 h-48 flex items-center justify-center text-slate-400 border border-slate-200">
                 <div className="text-center">
-                  <MapPin size={32} className="mx-auto mb-2 text-slate-300" />
-                  <p className="text-sm font-medium">Map placeholder</p>
-                  <p className="text-xs">123 Medical Center Dr, San Francisco, CA</p>
+                  <MapPin size={28} className="mx-auto mb-2 text-slate-300" />
+                  <p className="text-sm font-medium text-slate-400">123 Medical Center Dr, San Francisco, CA</p>
                 </div>
               </div>
             </div>
 
             {/* Right: Form */}
             <div>
-              <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase mb-6">
+              <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6 block w-fit">
                 Send a Message
-              </p>
+              </span>
 
               {submitted ? (
-                <div className="bg-green-50 border border-green-100 rounded-2xl p-10 text-center">
-                  <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
+                <div className="bg-green-50 border border-green-100 rounded-xl p-10 text-center mt-4">
+                  <CheckCircle2 size={40} className="text-green-500 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-slate-900 font-display mb-2">
                     Message Received!
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-slate-500 text-sm leading-relaxed">
                     Thank you for reaching out. A member of our team will contact you within 1
                     business day to follow up.
                   </p>
@@ -152,11 +148,11 @@ export default function Contact() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-6 bg-slate-50 rounded-2xl p-8 border border-slate-100"
+                  className="space-y-5 bg-slate-50 rounded-xl p-7 border border-slate-200 mt-4"
                 >
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Full Name</Label>
+                      <Label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</Label>
                       <Input
                         id="name"
                         name="name"
@@ -165,10 +161,11 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         data-testid="input-name"
+                        className="bg-white"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone Number</Label>
                       <Input
                         id="phone"
                         name="phone"
@@ -177,12 +174,13 @@ export default function Contact() {
                         value={form.phone}
                         onChange={handleChange}
                         data-testid="input-phone"
+                        className="bg-white"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email" className="text-sm font-medium text-slate-700">Email Address</Label>
                     <Input
                       id="email"
                       name="email"
@@ -192,18 +190,19 @@ export default function Contact() {
                       value={form.email}
                       onChange={handleChange}
                       data-testid="input-email"
+                      className="bg-white"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="preferredContact">Preferred Contact Method</Label>
+                    <Label htmlFor="preferredContact" className="text-sm font-medium text-slate-700">Preferred Contact Method</Label>
                     <select
                       id="preferredContact"
                       name="preferredContact"
                       value={form.preferredContact}
                       onChange={handleChange}
                       data-testid="select-preferred-contact"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       <option>Phone</option>
                       <option>Email</option>
@@ -212,7 +211,7 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message" className="text-sm font-medium text-slate-700">Message</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -222,19 +221,20 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       data-testid="textarea-message"
+                      className="bg-white"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full rounded-full font-semibold text-base"
+                    className="w-full font-medium"
                     data-testid="button-submit-contact"
                   >
                     Send Message
                   </Button>
 
-                  <p className="text-xs text-slate-500 text-center">
+                  <p className="text-xs text-slate-400 text-center">
                     We typically respond within 1 business day. For urgent matters, please call us
                     directly at (555) 867-5309.
                   </p>

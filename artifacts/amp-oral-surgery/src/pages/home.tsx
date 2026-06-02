@@ -3,8 +3,6 @@ import { Link } from "wouter";
 import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone } from "lucide-react";
 import heroImg from "@assets/hero-surgery.png";
 import aboutImg from "@assets/about-team.png";
-import img3 from "@assets/image_1780383963309.png";
-import img4 from "@assets/image_1780384029302.png";
 
 const stats = [
   { value: "15+", label: "Years of Experience" },
@@ -67,41 +65,40 @@ export default function Home() {
       <title>AMP Oral Surgery | Expert Oral & Maxillofacial Care</title>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative min-h-[90vh] flex items-end overflow-hidden bg-slate-900">
         <img
           src={heroImg}
           alt="Oral surgery care"
-          className="absolute inset-0 w-full h-full object-cover object-top opacity-60"
+          className="absolute inset-0 w-full h-full object-cover object-top opacity-55"
         />
-        {/* gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/55 to-slate-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-transparent to-transparent" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-20 pt-36">
           <div className="max-w-2xl text-white space-y-6">
             <div
-              className="inline-flex items-center gap-2 rounded-full border border-blue-400/40 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-200 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm"
               data-testid="badge-accepting-patients"
             >
-              <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
               Now Accepting New Patients
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-[1.05] tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-[1.05] tracking-tight text-white">
               Expert Surgical Care.{" "}
-              <span className="text-blue-400">Exceptional Comfort.</span>
+              <span className="text-blue-300">Exceptional Comfort.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-xl">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl">
               State-of-the-art oral and maxillofacial surgery delivered by board-certified
               specialists who put your well-being first — every step of the way.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Button
                 size="lg"
                 asChild
-                className="rounded-full text-base font-semibold px-8 py-6 shadow-lg shadow-blue-900/40"
+                className="font-semibold px-6"
                 data-testid="button-hero-request"
               >
                 <Link href="/contact">Request an Appointment</Link>
@@ -110,22 +107,21 @@ export default function Home() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="rounded-full text-base font-semibold px-8 py-6 bg-white/10 border-white/25 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm"
+                className="font-semibold px-6 bg-white/10 border-white/30 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm"
                 data-testid="button-hero-procedures"
               >
                 <Link href="/procedures">
-                  Our Procedures <ArrowRight className="ml-2" size={18} />
+                  Our Procedures <ArrowRight className="ml-1.5" size={16} />
                 </Link>
               </Button>
             </div>
 
-            {/* Quick contact */}
             <a
               href="tel:5558675309"
               className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mt-2"
               data-testid="link-hero-phone"
             >
-              <Phone size={16} />
+              <Phone size={15} />
               <span>(555) 867-5309 — Mon–Fri, 8 AM–5 PM</span>
             </a>
           </div>
@@ -133,17 +129,17 @@ export default function Home() {
       </section>
 
       {/* ── STATS BAR ────────────────────────────────────────── */}
-      <section className="bg-primary text-white">
+      <section className="bg-white border-b border-slate-100">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-blue-400/30">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-100">
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="py-8 px-6 text-center"
+                className="py-7 px-6 text-center"
                 data-testid={`stat-${s.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                <p className="text-3xl md:text-4xl font-bold font-display text-white">{s.value}</p>
-                <p className="text-blue-200 text-sm mt-1">{s.label}</p>
+                <p className="text-3xl md:text-4xl font-bold font-display text-primary">{s.value}</p>
+                <p className="text-slate-500 text-sm mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -157,10 +153,10 @@ export default function Home() {
             {/* Left: text */}
             <div className="space-y-8">
               <div>
-                <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase mb-4">
+                <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
                   Why AMP Oral Surgery
-                </p>
-                <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mb-6">
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-5">
                   Surgery you can trust.<br />Care you can feel.
                 </h2>
                 <p className="text-slate-600 text-lg leading-relaxed">
@@ -173,12 +169,12 @@ export default function Home() {
               <div className="space-y-6">
                 {features.map((f) => (
                   <div key={f.title} className="flex gap-5 items-start" data-testid={`feature-${f.title.toLowerCase().replace(/\s+/g, "-")}`}>
-                    <div className="bg-blue-100 text-primary w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <f.icon size={22} />
+                    <div className="bg-blue-50 text-primary w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <f.icon size={20} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 text-base mb-1">{f.title}</h3>
-                      <p className="text-slate-600 text-sm leading-relaxed">{f.description}</p>
+                      <h3 className="font-semibold text-slate-900 text-base mb-1">{f.title}</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
                     </div>
                   </div>
                 ))}
@@ -186,35 +182,35 @@ export default function Home() {
 
               <Button
                 asChild
-                className="rounded-full font-semibold px-7"
+                className="font-medium gap-1.5"
                 data-testid="button-about-us"
               >
                 <Link href="/about">
-                  Meet Our Team <ArrowRight className="ml-2" size={16} />
+                  Meet Our Team <ArrowRight size={15} />
                 </Link>
               </Button>
             </div>
 
             {/* Right: image collage */}
-            <div className="relative grid grid-cols-2 gap-4 h-[520px]">
+            <div className="relative grid grid-cols-2 gap-4 h-[500px]">
               <div className="rounded-2xl overflow-hidden row-span-2">
                 <img
-                  src={img3}
+                  src={heroImg}
                   alt="Oral surgery care"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-2xl overflow-hidden">
                 <img
-                  src={img4}
+                  src={aboutImg}
                   alt="Patient consultation"
                   className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="rounded-2xl overflow-hidden bg-primary flex items-center justify-center p-6 text-center text-white">
+              <div className="rounded-2xl bg-slate-900 flex items-center justify-center p-6 text-center text-white">
                 <div>
                   <p className="text-4xl font-bold font-display">98%</p>
-                  <p className="text-blue-200 text-sm mt-1">Patient Satisfaction</p>
+                  <p className="text-slate-400 text-sm mt-1">Patient Satisfaction</p>
                 </div>
               </div>
             </div>
@@ -227,39 +223,39 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase mb-4">
+              <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
                 What We Offer
-              </p>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight">
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4">
                 Procedures We Provide
               </h2>
             </div>
             <Button
               variant="outline"
               asChild
-              className="rounded-full flex-shrink-0"
+              className="flex-shrink-0 font-medium gap-1.5"
               data-testid="button-view-all-procedures"
             >
               <Link href="/procedures">
-                View All Procedures <ArrowRight className="ml-2" size={16} />
+                View All <ArrowRight size={15} />
               </Link>
             </Button>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {procedures.map((proc, i) => (
               <Link
                 key={proc.name}
                 href={proc.path}
                 data-testid={`card-proc-home-${i}`}
-                className="group bg-white border border-slate-100 rounded-2xl px-7 py-6 flex items-center justify-between shadow-sm hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200"
+                className="group bg-white border border-slate-200 rounded-xl px-6 py-5 flex items-center justify-between hover:border-primary/40 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
               >
-                <span className="font-semibold text-slate-800 group-hover:text-primary transition-colors">
+                <span className="font-medium text-slate-800 group-hover:text-primary transition-colors text-sm">
                   {proc.name}
                 </span>
                 <ArrowRight
-                  size={18}
-                  className="text-slate-300 group-hover:text-primary group-hover:translate-x-1 transition-all"
+                  size={16}
+                  className="text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all"
                 />
               </Link>
             ))}
@@ -273,27 +269,27 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
             <div className="relative">
-              <div className="rounded-3xl overflow-hidden aspect-[4/5] max-h-[600px]">
+              <div className="rounded-2xl overflow-hidden aspect-[4/5] max-h-[580px]">
                 <img
                   src={aboutImg}
                   alt="Surgical team at AMP Oral Surgery"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-[#0B1A30] rounded-2xl p-6 text-white shadow-xl max-w-[220px]">
-                <p className="text-sm text-slate-400 mb-1">Trusted by</p>
+              <div className="absolute -bottom-5 -right-5 bg-slate-900 rounded-xl p-5 text-white shadow-lg max-w-[200px]">
+                <p className="text-xs text-slate-400 mb-1">Trusted by</p>
                 <p className="text-3xl font-bold font-display">5,000+</p>
-                <p className="text-sm text-blue-300">patients in our community</p>
+                <p className="text-xs text-slate-400 mt-1">patients in our community</p>
               </div>
             </div>
 
             {/* Text */}
-            <div className="space-y-6">
-              <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase">
+            <div className="space-y-5">
+              <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
                 About AMP Oral Surgery
-              </p>
+              </span>
               <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight">
-                Compassionate Care, Trusted Expertise.
+                Compassionate Care,<br />Trusted Expertise.
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
                 AMP Oral Surgery was founded to bring fellowship-trained, hospital-level expertise
@@ -301,15 +297,15 @@ export default function Home() {
                 surgeons have decades of combined experience across the full spectrum of oral and
                 maxillofacial surgery.
               </p>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-500 leading-relaxed text-sm">
                 We take time with every patient — to listen, explain, and build a treatment plan
                 that fits your needs, your timeline, and your life. You will never feel like a
                 number here.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button
                   asChild
-                  className="rounded-full font-semibold px-7"
+                  className="font-medium"
                   data-testid="button-learn-more-about"
                 >
                   <Link href="/about">Learn More About Us</Link>
@@ -317,7 +313,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   asChild
-                  className="rounded-full font-semibold px-7"
+                  className="font-medium"
                   data-testid="button-new-patients"
                 >
                   <Link href="/new-patients">New Patient Info</Link>
@@ -331,35 +327,35 @@ export default function Home() {
       {/* ── TESTIMONIALS ─────────────────────────────────────── */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-blue-500 font-semibold tracking-widest text-xs uppercase mb-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase">
               Patient Stories
-            </p>
-            <h2 className="text-4xl font-bold font-display text-slate-900 mb-4">
+            </span>
+            <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">
               What Our Patients Say
             </h2>
-            <p className="text-slate-600 text-lg">
+            <p className="text-slate-500 text-base">
               Hear from the people whose care we're most proud of.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div
                 key={i}
                 data-testid={`card-testimonial-${i}`}
-                className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all"
+                className="bg-white rounded-2xl p-7 border border-slate-200 hover:shadow-md transition-all"
               >
                 <div className="flex mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} size={16} className="text-yellow-400 fill-yellow-400" />
+                    <Star key={j} size={14} className="text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                <p className="text-slate-700 leading-relaxed text-sm italic mb-6">
+                <p className="text-slate-600 leading-relaxed text-sm italic mb-6">
                   "{t.text}"
                 </p>
                 <div className="flex items-center gap-3 border-t border-slate-100 pt-5">
-                  <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm font-display">
+                  <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-bold text-xs font-display">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -374,28 +370,22 @@ export default function Home() {
       </section>
 
       {/* ── CTA BANNER ───────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-[#0B1A30]">
-        <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover object-center opacity-15"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1A30] via-[#0B1A30]/90 to-[#0B1A30]/80" />
-        </div>
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold font-display text-white leading-tight mb-6">
+      <section className="py-20 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
+          <span className="inline-flex items-center rounded-full bg-slate-100 text-slate-500 px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-6">
+            Get Started
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mb-5">
             Ready to restore your smile and health?
           </h2>
-          <p className="text-slate-300 text-xl mb-10">
+          <p className="text-slate-500 text-lg mb-8">
             Contact our office today to schedule your consultation and discuss your treatment options.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
               size="lg"
               asChild
-              className="rounded-full bg-white text-primary hover:bg-slate-100 text-base font-semibold px-8 py-6"
+              className="font-medium px-6"
               data-testid="button-cta-schedule"
             >
               <Link href="/contact">Schedule a Consultation</Link>
@@ -404,7 +394,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               asChild
-              className="rounded-full border-white/30 text-white bg-transparent hover:bg-white/10 hover:text-white text-base font-semibold px-8 py-6"
+              className="font-medium px-6"
               data-testid="button-cta-procedures"
             >
               <Link href="/procedures">View Our Procedures</Link>
@@ -412,9 +402,9 @@ export default function Home() {
           </div>
           <a
             href="tel:5558675309"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mt-8"
+            className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors text-sm mt-6"
           >
-            <Phone size={15} />
+            <Phone size={14} />
             <span>Or call us at (555) 867-5309</span>
           </a>
         </div>
