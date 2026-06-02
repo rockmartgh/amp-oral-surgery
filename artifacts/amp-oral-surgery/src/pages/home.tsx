@@ -19,7 +19,12 @@ function VideoPlayer({ src, poster }: { src: string; poster: string }) {
         src={src}
         poster={poster}
         preload="metadata"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover cursor-pointer"
+        onClick={() => {
+          if (!ref.current) return;
+          if (ref.current.paused) { ref.current.play(); setPlaying(true); }
+          else { ref.current.pause(); setPlaying(false); }
+        }}
         onEnded={() => setPlaying(false)}
         onPause={() => setPlaying(false)}
       />
