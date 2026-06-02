@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone, Quote } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import heroBgImg from "@assets/office-reception-hero.jpg";
+import heroBgImg from "@assets/image_1780388571436.png";
 import ampIntroVideo from "@assets/Allow_us_to_reintroduce_ourselves!AMP_is_here_to_service_patie_1780387651734.mp4";
 import videoPosterImg from "@assets/Image-51_1780387953861.jpg";
 import aboutImg from "@assets/office-team.jpg";
