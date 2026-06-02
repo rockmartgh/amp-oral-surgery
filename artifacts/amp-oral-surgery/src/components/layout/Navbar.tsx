@@ -56,7 +56,9 @@ export default function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         overHero
           ? "bg-gradient-to-b from-slate-950/55 via-slate-950/25 to-transparent"
-          : "bg-white/85 backdrop-blur-lg shadow-[0_1px_0_rgba(15,23,42,0.05),0_10px_30px_-12px_rgba(15,23,42,0.18)]"
+          : mobileMenuOpen
+            ? "bg-white shadow-[0_1px_0_rgba(15,23,42,0.05),0_10px_30px_-12px_rgba(15,23,42,0.18)]"
+            : "bg-white/85 backdrop-blur-lg shadow-[0_1px_0_rgba(15,23,42,0.05),0_10px_30px_-12px_rgba(15,23,42,0.18)]"
       }`}
     >
       {/* Top utility strip */}
