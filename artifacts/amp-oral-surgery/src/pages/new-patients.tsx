@@ -1,43 +1,41 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { ClipboardList, Phone, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { ClipboardList, Phone, ArrowRight, CheckCircle2, AlertCircle, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/office-lounge.jpg";
 import consultationImg from "@assets/office-consultation.jpg";
 
 const whatToBring = [
-  "Photo ID (driver's license or passport)",
-  "Insurance cards (dental and medical)",
-  "List of current medications (including supplements)",
-  "Previous dental and medical records if applicable",
-  "Completed new patient forms (see below)",
-  "A responsible adult if sedation is planned",
+  "Valid Identification",
+  "Insurance Card",
+  "Medical History Information",
+  "List of Current Medications",
 ];
 
 const steps = [
   {
     step: "01",
-    title: "Schedule Your Consultation",
+    title: "Becoming a New Patient",
     description:
-      "Call our office or submit a request online. Our scheduling team will find a convenient time and confirm your appointment with a reminder.",
+      "Choosing the right oral surgery provider is crucial, and we're glad you're considering AMP Oral Surgery. When you walk into our Orlando office, rest assured that you're entering a space where your comfort and well-being come first.",
   },
   {
     step: "02",
-    title: "Complete Your New Patient Forms",
+    title: "Your Initial Visit",
     description:
-      "We will send you patient intake forms prior to your visit. Completing these in advance saves time and helps us prepare for your care.",
+      "During your first visit, we'll conduct a thorough examination and discuss your medical and dental history. We'll also explore your treatment options, making sure to explain each one so you can make an informed decision.",
   },
   {
     step: "03",
-    title: "Meet Our Team",
+    title: "Pre-Visit Forms",
     description:
-      "At your first appointment, you'll meet your surgeon, review your medical history, and receive a thorough examination and treatment plan discussion.",
+      "For your convenience, we offer downloadable new patient forms. Feel free to fill these out before you arrive, so we can spend more time focusing on you and your needs.",
   },
   {
     step: "04",
     title: "Begin Your Treatment",
     description:
-      "Once your plan is finalized, we'll schedule your procedure and walk you through preparation, recovery, and aftercare instructions.",
+      "Once your plan is finalized, we'll schedule your procedure and walk you through preparation, recovery, and aftercare instructions every step of the way.",
   },
 ];
 
@@ -76,18 +74,47 @@ export default function NewPatients() {
         </div>
       </section>
 
+      {/* Patient Forms Highlight */}
+      <section className="py-10 bg-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <Reveal>
+            <div className="bg-gradient-to-r from-primary to-accent rounded-2xl p-8 md:p-10 text-white shadow-glow flex flex-col md:flex-row md:items-center gap-6">
+              <div className="bg-white/20 rounded-xl w-12 h-12 flex items-center justify-center flex-shrink-0">
+                <ClipboardList size={22} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-bold font-display mb-1">Save Time During Your Visit</h2>
+                <p className="text-blue-50 leading-relaxed">
+                  Save time during your visit by filling out our new patient forms in advance.
+                  Click the link below to access and complete the necessary forms before your appointment.
+                </p>
+              </div>
+              <a
+                href="https://patientforms.csdental.com/pub/0f10ef38-abc1-ed11-ba77-00155d856ce0/forms/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-primary font-semibold text-sm rounded-full px-6 py-3 hover:bg-blue-50 transition-colors flex-shrink-0 shadow-sm"
+                data-testid="link-patient-forms"
+              >
+                Access New Patient Forms <ExternalLink size={15} />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Steps */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <Reveal className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
-              How It Works
+              What to Expect
             </span>
             <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">
-              Your First Visit, Step by Step
+              Becoming a New Patient: What You Should Know
             </h2>
             <p className="text-slate-500">
-              We've designed a clear, simple process so you always know what's coming next.
+              We focus on providing top-notch patient care and effective solutions for your oral health needs.
             </p>
           </Reveal>
 
@@ -122,11 +149,10 @@ export default function NewPatients() {
                 Be Prepared
               </span>
               <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-5">
-                What to Bring to Your Appointment
+                What to Bring for Your First Visit
               </h2>
               <p className="text-slate-500 mb-7 leading-relaxed">
-                Having the right documents on hand at your first visit helps us serve you efficiently
-                and create the most accurate treatment plan.
+                To expedite your appointment, please bring the following to your first visit.
               </p>
               <ul className="space-y-4">
                 {whatToBring.map((item, i) => (
@@ -146,14 +172,18 @@ export default function NewPatients() {
                   </div>
                   <h3 className="text-base font-bold text-slate-900 font-display">Patient Forms</h3>
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed mb-3">
-                  We will email your new patient intake forms before your appointment. Please
-                  complete and return them at least 24 hours in advance so our team can review
-                  your medical and dental history.
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  Save time during your visit by filling out our new patient forms in advance.
+                  Access and complete the necessary forms before your appointment.
                 </p>
-                <p className="text-slate-400 text-xs italic">
-                  If you haven't received your forms, please call our office and we'll resend them.
-                </p>
+                <a
+                  href="https://patientforms.csdental.com/pub/0f10ef38-abc1-ed11-ba77-00155d856ce0/forms/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:underline"
+                >
+                  Complete New Patient Forms <ExternalLink size={13} />
+                </a>
               </div>
 
               <div className="bg-amber-50 border border-amber-100 rounded-2xl p-7 shadow-soft">

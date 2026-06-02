@@ -72,22 +72,20 @@ export default function About() {
                 Our Mission
               </span>
               <h2 className="text-4xl font-bold font-display text-slate-900 leading-tight">
-                Surgery you can trust. Care you can feel.
+                You're the Focus of Everything We Do at AMP Oral Surgery
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
-                AMP Oral Surgery was established to bring fellowship-trained, hospital-level oral
-                surgery expertise directly to the patients who need it most — in an environment
-                designed for comfort, transparency, and trust.
+                When it comes to oral healthcare, you're not just seeking treatment; you're looking
+                for a partnership that understands you. That's what you'll find here at AMP Oral
+                Surgery. Our primary mission is to focus on you, your comfort, and your unique oral
+                health needs.
               </p>
-              <p className="text-slate-500 leading-relaxed text-sm">
-                We understand that undergoing surgery can be stressful. That's why every member of
-                our team — from our front desk staff to the surgical suite — is dedicated
-                to making your experience as smooth and reassuring as possible.
-              </p>
-              <p className="text-slate-500 leading-relaxed text-sm">
-                Whether you're coming in for a wisdom tooth removal or a complex jaw reconstruction,
-                you will receive the same level of attentive, personalized care. That's the AMP
-                commitment.
+              <p className="text-slate-500 leading-relaxed">
+                Led by Dr. Jonathan Elmore, our team knows that healthcare is more than procedures
+                and prescriptions; it's about building trust. We're more than just your oral surgery
+                provider; consider us your partners in achieving the oral health you deserve. You'll
+                leave our Orlando-based office not just with solutions, but with the peace of mind
+                that comes from being truly cared for.
               </p>
             </Reveal>
             <Reveal delay={0.15} className="relative">
