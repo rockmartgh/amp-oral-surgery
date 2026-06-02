@@ -88,16 +88,13 @@ export default function Footer() {
 
         </div>
         
-        <div className="mt-16 pt-8 border-t border-slate-800 text-sm text-center text-slate-500">
+        <div className="mt-16 pt-8 border-t border-slate-800 text-sm text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; {new Date().getFullYear()} AMP Oral Surgery. All rights reserved.</p>
-        </div>
-
-        <div className="mt-6 pt-5 border-t border-slate-800/40 flex items-center justify-center text-sm text-slate-600">
           <a
             href="https://foxpointwd.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2.5 text-white hover:opacity-80 transition-opacity"
           >
             <img src={foxpointLogo} alt="FoxPoint Web Design" className="h-7" />
             <span>Designed and Powered by FoxPoint Web Design</span>
