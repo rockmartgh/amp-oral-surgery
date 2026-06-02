@@ -35,6 +35,8 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-white transition-colors text-sm">About Us</Link></li>
               <li><Link href="/new-patients" className="hover:text-white transition-colors text-sm">New Patients</Link></li>
               <li><Link href="/insurance" className="hover:text-white transition-colors text-sm">Insurance & Billing</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors text-sm">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition-colors text-sm">Terms of Service</Link></li>
             </ul>
           </div>
 
@@ -86,12 +88,8 @@ export default function Footer() {
 
         </div>
         
-        <div className="mt-16 pt-8 border-t border-slate-800 text-sm text-center text-slate-500 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-16 pt-8 border-t border-slate-800 text-sm text-center text-slate-500">
           <p>&copy; {new Date().getFullYear()} AMP Oral Surgery. All rights reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-          </div>
         </div>
 
         <div className="mt-6 pt-5 border-t border-slate-800/40 flex items-center justify-center text-sm text-slate-600">
