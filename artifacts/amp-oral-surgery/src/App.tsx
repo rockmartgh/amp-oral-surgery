@@ -9,6 +9,7 @@ import About from "@/pages/about";
 import NewPatients from "@/pages/new-patients";
 import Insurance from "@/pages/insurance";
 import Contact from "@/pages/contact";
+import PatientResources from "@/pages/patient-resources";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -25,6 +26,7 @@ function Router() {
           <Route path="/about" component={About} />
           <Route path="/new-patients" component={NewPatients} />
           <Route path="/insurance" component={Insurance} />
+          <Route path="/patient-resources" component={PatientResources} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
