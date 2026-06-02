@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import logoPath from "@assets/amp-logo.png";
 import foxpointLogo from "@assets/image_1780389968177.png";
-import { Phone, MapPin, Mail, Clock, Facebook, Instagram, Twitter } from "lucide-react";
+import { Phone, MapPin, Mail, Clock, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,9 +15,15 @@ export default function Footer() {
               Providing expert oral surgery care with a focus on patient comfort, safety, and optimal clinical outcomes.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-white transition-colors"><Facebook size={20} /></a>
-              <a href="#" className="hover:text-white transition-colors"><Instagram size={20} /></a>
-              <a href="#" className="hover:text-white transition-colors"><Twitter size={20} /></a>
+              <a
+                href="https://www.instagram.com/amporalsurgery/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow AMP Oral Surgery on Instagram"
+                className="hover:text-white transition-colors"
+              >
+                <Instagram size={20} />
+              </a>
             </div>
           </div>
 
