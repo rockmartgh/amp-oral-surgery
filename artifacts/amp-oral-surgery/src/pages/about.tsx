@@ -4,6 +4,7 @@ import { Award, BookOpen, Users, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import aboutTeamImg from "@assets/office-team.jpg";
 import consultationImg from "@assets/office-consultation.jpg";
+import drElmoreImg from "@assets/image_1780390665346.jpg";
 
 const values = [
   {
@@ -176,9 +177,9 @@ export default function About() {
               <div className="sticky top-28 space-y-4">
                 <div
                   data-testid="card-doctor-0"
-                  className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl overflow-hidden aspect-[3/4] flex items-center justify-center"
+                  className="rounded-2xl overflow-hidden aspect-[3/4]"
                 >
-                  <p className="text-xs font-medium text-slate-400">Photo Coming Soon</p>
+                  <img src={drElmoreImg} alt="Dr. Jonathan Elmore" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="bg-blue-50 rounded-2xl p-5 border border-blue-100">
                   <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-3">Credentials</p>

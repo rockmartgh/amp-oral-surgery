@@ -7,58 +7,22 @@ import consultationImg from "@assets/office-consultation.jpg";
 
 const procedures = [
   {
-    name: "Dental Implants",
+    name: "Implants & All-On-Four Cases",
     description:
-      "Dental implants are the gold standard for replacing missing teeth. Using titanium posts surgically placed into the jawbone, implants provide a permanent, natural-looking foundation for crowns, bridges, or dentures. We plan every implant case with 3D imaging for precision placement and long-lasting results.",
-    benefits: ["Permanent tooth replacement", "Preserves jawbone", "Natural look and feel"],
+      "Dental implants and All-on-4 full-arch restorations offer permanent, natural-looking solutions for missing or failing teeth. Using titanium posts placed precisely into the jawbone, we restore individual teeth or an entire arch — often in as few as one appointment. Every case is treatment-planned with 3D imaging for optimal placement and long-lasting outcomes.",
+    benefits: ["Single & full-arch solutions", "All-on-4 same-day restorations", "3D-planned precision placement"],
   },
   {
-    name: "Wisdom Teeth Removal",
+    name: "TMD",
     description:
-      "Impacted or problematic wisdom teeth can cause pain, infection, and damage to adjacent teeth. We offer comfortable wisdom tooth extractions — from simple removal to complex surgical cases — using IV sedation options to ensure a relaxed, pain-free experience.",
-    benefits: ["Prevents crowding & infection", "Sedation available", "Expert surgical technique"],
+      "Temporomandibular Disorder affects the jaw joint and surrounding muscles, causing pain, clicking, limited opening, and headaches. Dr. Elmore evaluates the full spectrum of TMD and provides targeted treatments — from conservative therapy to surgical intervention — to relieve pain and restore normal jaw function.",
+    benefits: ["Jaw pain & headache relief", "Comprehensive evaluation", "Conservative to surgical options"],
   },
   {
-    name: "Bone Grafting",
+    name: "Painless Tooth Extraction",
     description:
-      "Bone grafting restores lost jawbone density needed for implant placement or to preserve facial structure. Using advanced grafting materials, we rebuild the bone foundation so you can benefit from implants and maintain a healthy bite and appearance.",
-    benefits: ["Enables implant placement", "Restores facial structure", "Advanced materials used"],
-  },
-  {
-    name: "Corrective Jaw Surgery",
-    description:
-      "Orthognathic surgery corrects jaw irregularities that affect chewing, speaking, breathing, and facial balance. Working in coordination with your orthodontist, we precisely reposition the upper and/or lower jaw to create proper alignment and harmony.",
-    benefits: ["Improves function & aesthetics", "Coordinated orthodontic care", "Long-term results"],
-  },
-  {
-    name: "Facial Trauma",
-    description:
-      "Injuries to the face, jaw, and surrounding structures require immediate, expert attention. Our surgical team is trained in the management of facial fractures, lacerations, and dental injuries — providing reconstructive care to restore both form and function.",
-    benefits: ["Emergency care available", "Reconstructive expertise", "Comprehensive management"],
-  },
-  {
-    name: "Oral Pathology",
-    description:
-      "Early detection of oral diseases — including cysts, tumors, and pre-cancerous lesions — is critical. We perform biopsies and surgical treatment of oral pathology, working closely with your healthcare team to ensure the best possible outcomes.",
-    benefits: ["Early detection & biopsy", "Collaborative care", "Comprehensive evaluation"],
-  },
-  {
-    name: "Tooth Extractions",
-    description:
-      "When a tooth cannot be saved, our team performs gentle extractions with minimal discomfort. We offer multiple sedation options and discuss tooth replacement solutions — such as implants or bridges — to plan for a healthy, complete smile.",
-    benefits: ["Comfortable procedure", "Multiple sedation options", "Replacement planning"],
-  },
-  {
-    name: "Platelet Rich Fibrin (PRF)",
-    description:
-      "PRF is an innovative biological therapy derived from your own blood. Concentrated growth factors are applied to surgical sites to accelerate healing, reduce swelling, and improve outcomes after extractions, grafts, and implant procedures.",
-    benefits: ["Natural healing acceleration", "Reduced swelling & pain", "Improved surgical outcomes"],
-  },
-  {
-    name: "Cleft Lip & Palate",
-    description:
-      "We provide compassionate surgical management of cleft lip and palate conditions. Our team coordinates with multidisciplinary specialists to deliver comprehensive, staged care — helping patients and families navigate treatment with confidence and support.",
-    benefits: ["Multidisciplinary coordination", "Staged treatment planning", "Family-centered care"],
+      "When a tooth cannot be saved, we make sure the experience is as comfortable as possible. Using advanced techniques and sedation options, Dr. Elmore performs gentle extractions — from routine removals to complex surgical cases — with a focus on minimal discomfort and a smooth recovery.",
+    benefits: ["Multiple sedation options", "Simple & surgical extractions", "Smooth, comfortable recovery"],
   },
 ];
 
@@ -87,9 +51,8 @@ export default function Procedures() {
               Our Procedures
             </h1>
             <p className="text-slate-200 text-lg leading-relaxed max-w-xl">
-              From complex reconstructive surgery to routine extractions, AMP Oral Surgery provides
-              the full spectrum of oral and maxillofacial care — delivered with precision, technology,
-              and genuine compassion.
+              Expert implant solutions, TMD treatment, and gentle extractions — delivered with
+              precision, advanced technology, and genuine compassion for every patient.
             </p>
             <Button asChild className="rounded-full font-semibold px-7 mt-8 shadow-glow-soft hover:shadow-glow transition-shadow" size="lg">
               <Link href="/contact">Request a Consultation</Link>

@@ -72,12 +72,9 @@ const features = [
 ];
 
 const procedures = [
-  { name: "Dental Implants", path: "/procedures" },
-  { name: "Wisdom Teeth Removal", path: "/procedures" },
-  { name: "Bone Grafting", path: "/procedures" },
-  { name: "Corrective Jaw Surgery", path: "/procedures" },
-  { name: "Facial Trauma", path: "/procedures" },
-  { name: "Oral Pathology", path: "/procedures" },
+  { name: "Implants & All-On-Four Cases", path: "/procedures" },
+  { name: "TMD", path: "/procedures" },
+  { name: "Painless Tooth Extraction", path: "/procedures" },
 ];
 
 const testimonials = [

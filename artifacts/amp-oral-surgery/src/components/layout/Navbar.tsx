@@ -14,15 +14,9 @@ const navLinks = [
 ];
 
 const procedureItems = [
-  "Dental Implants",
-  "Wisdom Teeth Removal",
-  "Bone Grafting",
-  "Corrective Jaw Surgery",
-  "Facial Trauma",
-  "Oral Pathology",
-  "Tooth Extractions",
-  "Platelet Rich Fibrin (PRF)",
-  "Cleft Lip & Palate",
+  "Implants & All-On-Four Cases",
+  "TMD",
+  "Painless Tooth Extraction",
 ];
 
 const heroRoutes = navLinks.map((l) => l.path);
