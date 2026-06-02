@@ -169,7 +169,7 @@ export default function Navbar() {
                             key={proc}
                             href="/procedures"
                             onClick={() => setProcOpen(false)}
-                            className="flex items-center px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-primary text-sm font-medium transition-colors"
+                            className="flex items-center justify-center px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-primary text-sm font-medium transition-colors text-center"
                           >
                             {proc}
                           </Link>
