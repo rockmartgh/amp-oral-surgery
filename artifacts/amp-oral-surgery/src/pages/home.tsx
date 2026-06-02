@@ -47,7 +47,7 @@ const stats = [
   { value: "15+", label: "Years of Experience" },
   { value: "5,000+", label: "Patients Treated" },
   { value: "4.9", label: "Average Patient Rating" },
-  { value: "3", label: "Board-Certified Surgeons" },
+  { value: "2", label: "Convenient Locations" },
 ];
 
 const features = [
@@ -55,7 +55,7 @@ const features = [
     icon: ShieldCheck,
     title: "Board-Certified Excellence",
     description:
-      "Our surgeons are fellowship-trained specialists dedicated to the highest standards of safety and clinical outcomes.",
+      "Care is led by a board-certified, fellowship-trained surgeon dedicated to the highest standards of safety and clinical outcomes.",
   },
   {
     icon: Stethoscope,
@@ -132,8 +132,8 @@ export default function Home() {
             </h1>
 
             <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl">
-              State-of-the-art oral and maxillofacial surgery delivered by board-certified
-              specialists who put your well-being first — every step of the way.
+              State-of-the-art oral and maxillofacial surgery delivered by a board-certified
+              specialist who puts your well-being first — every step of the way.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">

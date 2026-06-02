@@ -9,7 +9,7 @@ const procedures = [
   {
     name: "Dental Implants",
     description:
-      "Dental implants are the gold standard for replacing missing teeth. Using titanium posts surgically placed into the jawbone, implants provide a permanent, natural-looking foundation for crowns, bridges, or dentures. Our surgeons plan every implant case with 3D imaging for precision placement and long-lasting results.",
+      "Dental implants are the gold standard for replacing missing teeth. Using titanium posts surgically placed into the jawbone, implants provide a permanent, natural-looking foundation for crowns, bridges, or dentures. We plan every implant case with 3D imaging for precision placement and long-lasting results.",
     benefits: ["Permanent tooth replacement", "Preserves jawbone", "Natural look and feel"],
   },
   {
@@ -33,7 +33,7 @@ const procedures = [
   {
     name: "Facial Trauma",
     description:
-      "Injuries to the face, jaw, and surrounding structures require immediate, expert attention. Our surgeons are trained in the management of facial fractures, lacerations, and dental injuries — providing reconstructive care to restore both form and function.",
+      "Injuries to the face, jaw, and surrounding structures require immediate, expert attention. Our surgical team is trained in the management of facial fractures, lacerations, and dental injuries — providing reconstructive care to restore both form and function.",
     benefits: ["Emergency care available", "Reconstructive expertise", "Comprehensive management"],
   },
   {

@@ -10,7 +10,7 @@ const values = [
     icon: Award,
     title: "Clinical Excellence",
     description:
-      "Our surgeons hold board certifications in Oral and Maxillofacial Surgery, backed by years of hospital-based training and a commitment to continued education.",
+      "Our surgical team is board-certified in Oral and Maxillofacial Surgery, backed by years of hospital-based training and a commitment to continued education.",
   },
   {
     icon: Users,
@@ -28,19 +28,9 @@ const values = [
 
 const team = [
   {
-    name: "Dr. A. Mitchell, D.D.S., M.D.",
-    title: "Oral & Maxillofacial Surgeon",
-    bio: "Board-certified specialist with over 15 years of experience in complex oral surgery, implantology, and jaw reconstruction.",
-  },
-  {
-    name: "Dr. M. Patel, D.D.S.",
-    title: "Oral & Maxillofacial Surgeon",
-    bio: "Specializing in dental implants, wisdom teeth management, and facial trauma. Dedicated to patient-centered outcomes.",
-  },
-  {
-    name: "Dr. P. Rosenberg, D.D.S.",
-    title: "Oral & Maxillofacial Surgeon",
-    bio: "Expert in orthognathic surgery and cleft lip/palate treatment with fellowship training from a leading academic medical center.",
+    name: "Dr. Jonathan Elmore",
+    title: "Board-Certified Oral & Maxillofacial Surgeon",
+    bio: "Dr. Elmore leads AMP Oral Surgery with a commitment to safe, comfortable, and patient-centered surgical care across our Orlando and Clermont locations.",
   },
 ];
 
@@ -97,7 +87,7 @@ export default function About() {
               </p>
               <p className="text-slate-500 leading-relaxed text-sm">
                 We understand that undergoing surgery can be stressful. That's why every member of
-                our team — from our front desk staff to our board-certified surgeons — is dedicated
+                our team — from our front desk staff to the surgical suite — is dedicated
                 to making your experience as smooth and reassuring as possible.
               </p>
               <p className="text-slate-500 leading-relaxed text-sm">
@@ -164,11 +154,11 @@ export default function About() {
             </span>
             <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">Meet Our Team</h2>
             <p className="text-slate-500">
-              Our surgeons and staff are united by a passion for oral health and a commitment to excellence.
+              Our surgical team and staff are united by a passion for oral health and a commitment to excellence.
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 max-w-sm mx-auto">
             {team.map((doctor, i) => (
               <Reveal key={doctor.name} delay={i * 0.1}>
                 <div

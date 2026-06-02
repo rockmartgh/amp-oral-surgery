@@ -264,7 +264,7 @@ export default function Contact() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-3xl p-6 text-white shadow-lifted bg-gradient-to-br from-[#1863DC] via-[#7C3AED] to-[#CC3366] hover:-translate-y-1 transition-transform duration-300"
+                className="group block rounded-3xl p-6 text-white shadow-lifted bg-gradient-to-br from-[#1C90FB] via-[#7C3AED] to-[#CC3366] hover:-translate-y-1 transition-transform duration-300"
               >
                 <div className="flex items-center gap-4">
                   <div className="bg-white/15 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center ring-1 ring-white/20">
