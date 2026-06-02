@@ -138,8 +138,21 @@ export default function Navbar() {
                   className="relative"
                   onMouseEnter={openProc}
                   onMouseLeave={closeProc}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) setProcOpen(false);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape") setProcOpen(false);
+                  }}
                 >
-                  <button className={`${linkClass} flex items-center gap-1`}>
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={procOpen}
+                    onClick={() => setProcOpen((o) => !o)}
+                    onFocus={openProc}
+                    className={`${linkClass} flex items-center gap-1`}
+                  >
                     Procedures
                     <ChevronDown
                       size={14}
