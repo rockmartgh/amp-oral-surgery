@@ -46,7 +46,7 @@ function VideoPlayer({ src, poster }: { src: string; poster: string }) {
 const stats = [
   { value: "15+", label: "Years of Experience" },
   { value: "5,000+", label: "Patients Treated" },
-  { value: "98%", label: "Patient Satisfaction" },
+  { value: "4.9★", label: "Average Patient Rating" },
   { value: "3", label: "Board-Certified Surgeons" },
 ];
 
@@ -247,10 +247,16 @@ export default function Home() {
                 <div className="rounded-2xl overflow-hidden ring-frame">
                   <img src={consultationImg} alt="Patient consultation" className="w-full h-full object-cover" />
                 </div>
-                <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-6 text-center text-white shadow-lifted bg-grid-dark">
-                  <div>
-                    <p className="text-4xl font-bold font-display">98%</p>
-                    <p className="text-slate-400 text-sm mt-1">Patient Satisfaction</p>
+                <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-[#0B1A30] flex flex-col items-center justify-center p-6 text-center text-white shadow-lifted relative overflow-hidden">
+                  <div className="absolute inset-0 bg-grid-dark opacity-40" />
+                  <div className="relative z-10">
+                    <div className="flex gap-1 justify-center mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-5xl font-bold font-display leading-none">4.9</p>
+                    <p className="text-slate-400 text-sm mt-2 leading-snug">Average<br/>Patient Rating</p>
                   </div>
                 </div>
               </div>
