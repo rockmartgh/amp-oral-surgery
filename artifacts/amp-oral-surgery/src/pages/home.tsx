@@ -1,11 +1,42 @@
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone, Quote } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroBgImg from "@assets/office-reception-hero.jpg";
 import ampIntroVideo from "@assets/Allow_us_to_reintroduce_ourselves!AMP_is_here_to_service_patie_1780387651734.mp4";
+import videoPosterImg from "@assets/Image-51_1780387953861.jpg";
 import aboutImg from "@assets/office-team.jpg";
 import consultationImg from "@assets/office-consultation.jpg";
+
+function VideoPlayer({ src, poster }: { src: string; poster: string }) {
+  const [playing, setPlaying] = useState(false);
+  const ref = useRef<HTMLVideoElement>(null);
+  return (
+    <div className="relative w-full h-full">
+      <video
+        ref={ref}
+        src={src}
+        poster={poster}
+        preload="metadata"
+        className="w-full h-full object-cover"
+        onEnded={() => setPlaying(false)}
+        onPause={() => setPlaying(false)}
+      />
+      {!playing && (
+        <button
+          onClick={() => { ref.current?.play(); setPlaying(true); }}
+          className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors"
+          aria-label="Play video"
+        >
+          <span className="w-[72px] h-[72px] rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-200">
+            <span className="w-0 h-0 border-y-[13px] border-y-transparent border-l-[22px] border-l-slate-800 ml-1.5" />
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
 
 const stats = [
   { value: "15+", label: "Years of Experience" },
@@ -205,14 +236,8 @@ export default function Home() {
             <Reveal delay={0.15} className="relative">
               <div className="glow-blob bg-accent/30 w-72 h-72 -bottom-10 -right-10" />
               <div className="relative grid grid-cols-2 gap-4 h-[520px]">
-                <div className="rounded-2xl overflow-hidden row-span-2 ring-frame bg-black flex items-center justify-center">
-                  <video
-                    src={ampIntroVideo}
-                    controls
-                    preload="metadata"
-                    className="w-full h-full object-contain"
-                    aria-label="Meet AMP Oral Surgery"
-                  />
+                <div className="rounded-2xl overflow-hidden row-span-2 ring-frame bg-black">
+                  <VideoPlayer src={ampIntroVideo} poster={videoPosterImg} />
                 </div>
                 <div className="rounded-2xl overflow-hidden ring-frame">
                   <img src={consultationImg} alt="Patient consultation" className="w-full h-full object-cover" />
