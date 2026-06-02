@@ -56,23 +56,29 @@ export default function Contact() {
     <div className="flex flex-col w-full">
       <title>Contact Us | AMP Oral Surgery</title>
 
-      {/* Hero — image banner */}
-      <section className="relative h-72 overflow-hidden">
+      {/* Hero — full-bleed background */}
+      <section className="relative min-h-[58vh] overflow-hidden bg-slate-900">
         <img
           src={receptionImg}
-          alt="AMP Oral Surgery office"
+          alt=""
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/65 to-slate-900/40" />
-        <div className="absolute inset-0 bg-grid-dark opacity-40" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 h-full flex flex-col justify-center">
-          <Reveal y={20}>
-            <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-3 w-fit backdrop-blur-md">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/92 via-slate-900/65 to-slate-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-white" />
+        <div className="absolute inset-0 bg-grid-dark opacity-25" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-28 pb-40">
+          <Reveal y={20} className="max-w-2xl">
+            <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-4 w-fit backdrop-blur-md">
               Get in Touch
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold font-display text-white leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight">
               Contact Us
             </h1>
+            <p className="text-slate-200 text-lg leading-relaxed max-w-xl mt-4">
+              Have a question or ready to schedule? Reach out and a member of our team will be glad
+              to help.
+            </p>
           </Reveal>
         </div>
       </section>

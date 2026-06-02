@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone, Quote } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroImg from "@assets/hero-surgery.png";
+import heroBgImg from "@assets/image_1780386195493.png";
 import aboutImg from "@assets/about-team.png";
 import consultationImg from "@assets/consultation.png";
 
@@ -69,9 +70,10 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-slate-900">
         <img
-          src={heroImg}
-          alt="Oral surgery care"
-          className="absolute inset-0 w-full h-full object-cover object-top opacity-55"
+          src={heroBgImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/20 to-transparent" />

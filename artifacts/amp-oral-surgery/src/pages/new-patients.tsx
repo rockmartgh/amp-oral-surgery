@@ -46,38 +46,33 @@ export default function NewPatients() {
     <div className="flex flex-col w-full">
       <title>New Patients | AMP Oral Surgery</title>
 
-      {/* Hero — split layout */}
-      <section className="bg-slate-50 border-b border-slate-200 py-16 overflow-hidden relative">
-        <div className="absolute inset-0 bg-grid opacity-60" />
-        <div className="glow-blob bg-primary/20 w-80 h-80 -top-20 right-0" />
-        <div className="container mx-auto px-4 lg:px-8 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <Reveal>
-              <span className="inline-flex items-center rounded-full bg-white text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 shadow-soft">
-                Welcome
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight mt-4 mb-4">
-                New Patient Information
-              </h1>
-              <p className="text-slate-500 text-lg leading-relaxed">
-                We're glad you've chosen AMP Oral Surgery. Here's everything you need to know to make
-                your first visit as smooth and comfortable as possible.
-              </p>
-              <Button asChild className="rounded-full font-semibold px-6 mt-8 shadow-glow-soft hover:shadow-glow transition-shadow" size="lg">
-                <Link href="/contact">Request an Appointment</Link>
-              </Button>
-            </Reveal>
-            <Reveal delay={0.15} className="relative">
-              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl border-2 border-primary/20 hidden md:block" />
-              <div className="rounded-2xl overflow-hidden aspect-video ring-frame relative">
-                <img
-                  src={receptionImg}
-                  alt="AMP Oral Surgery welcoming reception"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </Reveal>
-          </div>
+      {/* Hero — full-bleed background */}
+      <section className="relative min-h-[58vh] overflow-hidden bg-slate-900">
+        <img
+          src={receptionImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/92 via-slate-900/65 to-slate-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-white" />
+        <div className="absolute inset-0 bg-grid-dark opacity-25" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-28 pb-40">
+          <Reveal y={20} className="max-w-2xl">
+            <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase backdrop-blur-md">
+              Welcome
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white leading-tight mt-4 mb-4">
+              New Patient Information
+            </h1>
+            <p className="text-slate-200 text-lg leading-relaxed max-w-xl">
+              We're glad you've chosen AMP Oral Surgery. Here's everything you need to know to make
+              your first visit as smooth and comfortable as possible.
+            </p>
+            <Button asChild className="rounded-full font-semibold px-7 mt-8 shadow-glow-soft hover:shadow-glow transition-shadow" size="lg">
+              <Link href="/contact">Request an Appointment</Link>
+            </Button>
+          </Reveal>
         </div>
       </section>
 
