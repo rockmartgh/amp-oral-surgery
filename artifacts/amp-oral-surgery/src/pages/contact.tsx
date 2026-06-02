@@ -319,7 +319,7 @@ export default function Contact() {
                       <p className="text-sm text-slate-500 whitespace-pre-line leading-snug mt-1">
                         {loc.address}
                       </p>
-                      {loc.note && <p className="text-xs text-slate-400 mt-1">{loc.note}</p>}
+                      <p className="text-xs text-slate-400 mt-1">{loc.note ?? "\u00A0"}</p>
                     </div>
                   </div>
                   <iframe
