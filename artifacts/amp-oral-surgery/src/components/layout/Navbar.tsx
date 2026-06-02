@@ -98,17 +98,6 @@ export default function Navbar() {
               overHero ? "brightness-0 invert" : "brightness-0"
             }`}
           />
-          <span className="font-display font-bold text-base leading-tight hidden sm:block">
-            <span className={overHero ? "text-white" : "text-slate-900"}>AMP</span>
-            <br />
-            <span
-              className={`text-xs font-semibold tracking-wide ${
-                overHero ? "text-blue-200" : "text-primary"
-              }`}
-            >
-              Oral Surgery
-            </span>
-          </span>
         </Link>
 
         {/* Desktop Nav */}

@@ -113,16 +113,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-dark opacity-40" />
         <div className="glow-blob bg-primary/40 w-[420px] h-[420px] -top-20 -left-20" />
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-20 pt-28">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-20 pt-44">
           <Reveal y={20} className="max-w-2xl text-white space-y-6">
-            <div
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md"
-              data-testid="badge-accepting-patients"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Now Accepting New Patients
-            </div>
-
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-[1.05] tracking-tight text-white">
               Expert Surgical Care.{" "}
               <span className="text-gradient">Exceptional Comfort.</span>
