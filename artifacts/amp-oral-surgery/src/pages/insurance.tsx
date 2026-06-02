@@ -1,26 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Phone, CreditCard, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Phone, CreditCard, ArrowRight, CheckCircle2, ClipboardList } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/office-lounge.jpg";
 
-const insuranceProviders = [
-  "Aetna",
-  "Blue Cross Blue Shield",
-  "Cigna",
-  "Delta Dental",
-  "Guardian",
-  "Humana",
-  "MetLife",
-  "United Healthcare",
-  "Principal Financial",
-  "Sun Life Financial",
-  "Lincoln Financial",
-  "Ameritas",
-  "Assurant",
-  "Careington",
-  "Dental Select",
-  "First Dental Health",
+const whyAMP = [
+  "Efficiency in every procedure",
+  "Compassionate client service",
+  "Close collaboration with referring dentists",
+  "Highly personalized approach",
+  "Focus on client comfort",
+  "Long-standing reputation for quality",
 ];
 
 const paymentOptions = [
@@ -90,33 +80,39 @@ export default function Insurance() {
                 Coverage
               </span>
               <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-5">
-                Accepted Insurance Plans
+                Insurance Information Made Simple
               </h2>
-              <p className="text-slate-500 leading-relaxed mb-3 text-sm">
-                AMP Oral Surgery participates with a wide range of dental and medical insurance
-                providers. Many oral surgery procedures — particularly those that are medically
-                necessary — may be covered under your medical plan in addition to dental coverage.
+              <p className="text-slate-500 leading-relaxed mb-8 text-sm">
+                We guide you through the financial aspects of your care. Our staff is experienced
+                in coordinating with insurance providers — we handle the heavy lifting when it
+                comes to filing your claims, ensuring a smoother process for you.
               </p>
-              <p className="text-slate-500 leading-relaxed mb-7 text-sm">
-                We strongly encourage you to contact your insurance provider before your visit to
-                understand your benefits. Our billing team is happy to assist with questions and
-                prior authorizations.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {insuranceProviders.map((provider, i) => (
-                  <div
-                    key={provider}
-                    data-testid={`item-insurance-${i}`}
-                    className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2"
-                  >
-                    <CheckCircle2 className="text-primary flex-shrink-0" size={15} />
-                    <span className="text-slate-600 text-sm">{provider}</span>
+
+              {/* Effortless Claims card */}
+              <div className="rounded-2xl bg-white border border-slate-200/70 shadow-soft p-7 mb-7">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-gradient-to-br from-primary to-accent text-white w-12 h-12 rounded-xl flex items-center justify-center shadow-glow-soft flex-shrink-0">
+                    <ClipboardList size={22} />
                   </div>
-                ))}
+                  <h3 className="text-lg font-bold text-slate-900 font-display">Effortless Claim Filings</h3>
+                </div>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Our team works directly with your insurance provider to file and follow up on
+                  claims on your behalf. We're committed to maximizing your benefits and minimizing
+                  out-of-pocket surprises.
+                </p>
               </div>
-              <p className="text-slate-400 text-xs mt-5 italic">
-                Don't see your plan listed? Contact us — we may still be able to work with your provider.
-              </p>
+
+              {/* Why AMP */}
+              <h3 className="text-base font-bold text-slate-900 font-display mb-4">Why AMP Stands Out</h3>
+              <ul className="space-y-3">
+                {whyAMP.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-slate-600">
+                    <CheckCircle2 className="text-primary flex-shrink-0" size={16} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
 
             <Reveal delay={0.15} className="space-y-5">
