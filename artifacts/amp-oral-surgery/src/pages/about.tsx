@@ -26,13 +26,6 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Dr. Jonathan Elmore",
-    title: "Board-Certified Oral & Maxillofacial Surgeon",
-    bio: "Dr. Elmore leads AMP Oral Surgery with a commitment to safe, comfortable, and patient-centered surgical care across our Orlando and Clermont locations.",
-  },
-];
 
 export default function About() {
   return (
@@ -145,37 +138,59 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Dr. Elmore Profile */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <Reveal className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
-              The People Behind Your Care
+              A Different Kind of Oral Surgeon
             </span>
-            <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">Meet Our Team</h2>
-            <p className="text-slate-500">
-              Our surgical team and staff are united by a passion for oral health and a commitment to excellence.
-            </p>
+            <h2 className="text-4xl font-bold font-display text-slate-900 mt-4 mb-3">Meet Dr. Jonathan Elmore</h2>
           </Reveal>
 
-          <div className="grid gap-6 max-w-sm mx-auto">
-            {team.map((doctor, i) => (
-              <Reveal key={doctor.name} delay={i * 0.1}>
+          <div className="grid lg:grid-cols-[1fr_320px] gap-12 items-start max-w-5xl mx-auto">
+            <Reveal className="space-y-6">
+              <h3 className="text-2xl font-bold font-display text-slate-900">The Unique Blend of Expertise and Compassion</h3>
+
+              <blockquote className="border-l-4 border-primary pl-6 py-1">
+                <p className="text-lg text-slate-700 italic leading-relaxed">
+                  "Oral Surgery shouldn't be a scary experience. I believe in empowering my patients with education, support, and a path to creating the treatment they deserve."
+                </p>
+                <footer className="mt-3 text-sm font-semibold text-primary">— Dr. Elmore</footer>
+              </blockquote>
+
+              <div className="space-y-4 text-slate-600 leading-relaxed">
+                <p>
+                  Dr. Jonathan Elmore was born and raised in Atlanta, GA. He received his undergraduate degree from Morehouse College and continued on to finish his dental school training at Columbia University College of Dental Medicine.
+                </p>
+                <p>
+                  Dr. Elmore elected to stay in NYC and train in Oral and Maxillofacial Surgery at The Brooklyn Hospital Center in Brooklyn, New York. After earning the respect of numerous owner-doctors for one of Orlando's top DSOs, he decided to open AMP Oral and Maxillofacial Surgery — a place for dentists and physicians to send their patients with the confidence that they will be cared for in a safe and caring environment.
+                </p>
+                <p>
+                  Dr. Elmore, his wife Lenneia, and his daughters, Ava and Aria, live in the Lake Nona area of Orlando. When not working, you may catch him on the golf course or playing with his dogs, Soco and Jack.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="sticky top-28 space-y-4">
                 <div
-                  data-testid={`card-doctor-${i}`}
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-200/70 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 h-full"
+                  data-testid="card-doctor-0"
+                  className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl overflow-hidden aspect-[3/4] flex items-center justify-center"
                 >
-                  <div className="bg-gradient-to-br from-slate-100 to-slate-200 h-48 flex items-center justify-center bg-grid">
-                    <p className="text-xs font-medium text-slate-400">Photo Coming Soon</p>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-base font-bold text-slate-900 font-display">{doctor.name}</h3>
-                    <p className="text-primary text-sm font-medium mb-2">{doctor.title}</p>
-                    <p className="text-slate-500 text-sm leading-relaxed">{doctor.bio}</p>
-                  </div>
+                  <p className="text-xs font-medium text-slate-400">Photo Coming Soon</p>
                 </div>
-              </Reveal>
-            ))}
+                <div className="bg-blue-50 rounded-2xl p-5 border border-blue-100">
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-3">Credentials</p>
+                  <ul className="text-sm text-slate-700 space-y-2">
+                    <li className="flex items-start gap-2"><span className="text-primary mt-0.5">•</span>Morehouse College — B.S.</li>
+                    <li className="flex items-start gap-2"><span className="text-primary mt-0.5">•</span>Columbia University CDM — D.D.S.</li>
+                    <li className="flex items-start gap-2"><span className="text-primary mt-0.5">•</span>The Brooklyn Hospital Center — OMFS Residency</li>
+                    <li className="flex items-start gap-2"><span className="text-primary mt-0.5">•</span>Board-Certified, Oral &amp; Maxillofacial Surgery</li>
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

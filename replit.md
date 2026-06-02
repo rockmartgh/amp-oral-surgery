@@ -37,7 +37,7 @@ A modern, professional marketing website for AMP Oral Surgery — a full-service
 
 ## Brand
 
-- Primary: `#1863DC` (blue) → HSL `217 80% 48%`
+- Primary: `#1C90FB` (blue) → HSL `209 96% 55%`
 - Secondary: `#CC3366` (rose/pink) → HSL `340 60% 50%`
 - Accent: `#0091FF` → HSL `206 100% 50%`
 - Dark navy (footer/hero): `#0B1A30`

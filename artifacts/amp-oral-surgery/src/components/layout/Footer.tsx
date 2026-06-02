@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import logoPath from "@assets/amp-logo.png";
+import foxpointLogo from "@assets/image_1780389968177.png";
 import { Phone, MapPin, Mail, Clock, Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
@@ -85,6 +86,11 @@ export default function Footer() {
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
+        </div>
+
+        <div className="mt-6 pt-5 border-t border-slate-800/40 flex items-center justify-center gap-2 text-xs text-slate-600">
+          <span>Designed and Powered by</span>
+          <img src={foxpointLogo} alt="FoxPoint Web Designs" className="h-4" />
         </div>
       </div>
     </footer>

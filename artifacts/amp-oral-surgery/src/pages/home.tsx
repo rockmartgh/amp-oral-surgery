@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone, Quote } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import heroBgImg from "@assets/image_1780388571436.png";
+import heroBgImg from "@assets/image_1780388571436.jpg";
 import ampIntroVideo from "@assets/Allow_us_to_reintroduce_ourselves!AMP_is_here_to_service_patie_1780387651734.mp4";
 import videoPosterImg from "@assets/Image-51_1780387953861.jpg";
 import aboutImg from "@assets/office-team.jpg";
@@ -330,8 +330,8 @@ export default function Home() {
               <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100">
                 About AMP Oral Surgery
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-slate-900 leading-tight">
-                Compassionate Care,<br />Trusted Expertise.
+              <h2 className="text-3xl md:text-5xl font-bold font-display text-slate-900 leading-tight">
+                <span className="whitespace-nowrap">Compassionate Care,</span><br /><span className="whitespace-nowrap">Trusted Expertise.</span>
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
                 AMP Oral Surgery was founded to bring fellowship-trained, hospital-level expertise
