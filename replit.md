@@ -1,44 +1,59 @@
-# [Project name]
+# AMP Oral Surgery
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A modern, professional marketing website for AMP Oral Surgery — a full-service oral and maxillofacial surgery practice.
 
 ## Run & Operate
 
+- `pnpm --filter @workspace/amp-oral-surgery run dev` — run the frontend (port assigned by workflow)
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite, Tailwind CSS, shadcn/ui, wouter (routing), framer-motion
+- Fonts: Montserrat, Overlock, Commissioner (Google Fonts)
+- API: Express 5 (backend, minimal — site is largely static)
+- Build: esbuild (API), Vite (frontend)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/amp-oral-surgery/src/pages/` — all page components (home, procedures, about, new-patients, insurance, contact)
+- `artifacts/amp-oral-surgery/src/components/layout/` — Navbar and Footer
+- `artifacts/amp-oral-surgery/src/index.css` — global CSS, theme tokens (HSL vars), Google Fonts
+- `attached_assets/` — logo (`amp-logo.png`), generated hero image (`hero-surgery.png`), team image (`about-team.png`)
 
-## Architecture decisions
+## Pages
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+| Route | Page |
+|---|---|
+| `/` | Home — hero, stats, why us, procedures overview, about, testimonials, CTA |
+| `/procedures` | Procedures — all 9 oral surgery procedures |
+| `/about` | About — mission, values, surgeon team |
+| `/new-patients` | New Patients — first visit steps, what to bring, sedation prep |
+| `/insurance` | Insurance — accepted plans, payment options (CareCredit, etc.) |
+| `/contact` | Contact — form, hours, address, map placeholder |
 
-## Product
+## Brand
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Primary: `#1863DC` (blue) → HSL `217 80% 48%`
+- Secondary: `#CC3366` (rose/pink) → HSL `340 60% 50%`
+- Accent: `#0091FF` → HSL `206 100% 50%`
+- Dark navy (footer/hero): `#0B1A30`
+- Fonts: Montserrat (display/headings), Commissioner (body), Overlock (accent)
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Filler images for now — client will supply real photos later
+- Site should feel modern, professional, warm — not cold/clinical
+- No emojis in the UI
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Logo (`amp-logo.png`) is small (2398 bytes) — displayed inverted in dark footer via `filter: brightness(0) invert(1)`
+- Images in `attached_assets/` are available via `@assets/` Vite alias in the frontend
+- The site is static/frontend-only — no DB or backend routes needed for this use case
 
 ## Pointers
 

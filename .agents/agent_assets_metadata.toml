@@ -1,5 +1,16 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "rvhTd6Lc2X_5ZHAJNIu3j"
+uri = "file://attached_assets/hero-surgery.png"
+type = "image"
+title = "oral surgery hero"
+
+[[generated]]
+id = "y1MXnCbzxh0c-kef2b0Jo"
+uri = "file://attached_assets/about-team.png"
+type = "image"
+title = "surgery team about"
 
 [[outputs]]
 id = "sFIfe_HBFWb8mA_NAvWVM"

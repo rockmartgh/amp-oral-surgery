@@ -4,6 +4,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import Procedures from "@/pages/procedures";
+import About from "@/pages/about";
+import NewPatients from "@/pages/new-patients";
+import Insurance from "@/pages/insurance";
+import Contact from "@/pages/contact";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -16,6 +21,11 @@ function Router() {
       <main className="flex-1">
         <Switch>
           <Route path="/" component={Home} />
+          <Route path="/procedures" component={Procedures} />
+          <Route path="/about" component={About} />
+          <Route path="/new-patients" component={NewPatients} />
+          <Route path="/insurance" component={Insurance} />
+          <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
       </main>
