@@ -11,23 +11,23 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Address",
-    value: "123 Medical Center Dr, Suite 200\nSan Francisco, CA 94143",
+    value: "3861 Avalon Park E Blvd\nOrlando, FL 32828",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "(555) 867-5309",
+    value: "407-544-0139",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@amporalsurgery.com",
+    value: "info@ampomfs.com",
   },
 ];
 
 const hours = [
-  { day: "Monday – Friday", time: "8:00 AM – 5:00 PM" },
-  { day: "Saturday", time: "Closed" },
+  { day: "Monday – Friday", time: "8:00 AM – 4:00 PM" },
+  { day: "Saturday", time: "8:00 AM – 4:00 PM" },
   { day: "Sunday", time: "Closed" },
 ];
 
@@ -130,13 +130,16 @@ export default function Contact() {
                     </div>
                   ))}
                 </div>
+                <p className="text-xs text-slate-500 mt-3 leading-relaxed">
+                  Concierge and after-hours appointments available by request.
+                </p>
               </div>
 
               {/* Map placeholder */}
               <div className="rounded-2xl overflow-hidden bg-slate-100 h-48 flex items-center justify-center text-slate-400 border border-slate-200/70 shadow-soft bg-grid">
                 <div className="text-center">
                   <MapPin size={28} className="mx-auto mb-2 text-slate-300" />
-                  <p className="text-sm font-medium text-slate-400">123 Medical Center Dr, San Francisco, CA</p>
+                  <p className="text-sm font-medium text-slate-400">3861 Avalon Park E Blvd, Orlando, FL 32828</p>
                 </div>
               </div>
             </Reveal>
@@ -205,7 +208,7 @@ export default function Contact() {
                   </Button>
 
                   <p className="text-xs text-slate-400 text-center">
-                    We typically respond within 1 business day. For urgent matters, please call us directly at (555) 867-5309.
+                    We typically respond within 1 business day. For urgent matters, please call us directly at 407-544-0139.
                   </p>
                 </form>
               )}

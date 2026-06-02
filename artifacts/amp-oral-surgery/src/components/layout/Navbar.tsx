@@ -47,19 +47,19 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <span className="flex items-center gap-1.5">
               <MapPin size={12} className="text-white/55" />
-              123 Medical Center Dr, Suite 200
+              3861 Avalon Park E Blvd, Orlando, FL 32828
             </span>
             <span className="flex items-center gap-1.5">
               <Clock size={12} className="text-white/55" />
-              Mon–Fri, 8 AM–5 PM
+              Mon–Sat, 8 AM–4 PM
             </span>
           </div>
           <a
-            href="tel:5558675309"
+            href="tel:4075440139"
             className="flex items-center gap-1.5 font-medium hover:text-white transition-colors"
           >
             <Phone size={12} />
-            (555) 867-5309
+            407-544-0139
           </a>
         </div>
       </div>
@@ -124,7 +124,7 @@ export default function Navbar() {
         {/* Right cluster */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="tel:5558675309"
+            href="tel:4075440139"
             aria-label="Call AMP Oral Surgery"
             className="transition-transform hover:scale-105"
           >
@@ -179,10 +179,10 @@ export default function Navbar() {
                 </Link>
               </Button>
               <a
-                href="tel:5558675309"
+                href="tel:4075440139"
                 className="flex items-center justify-center gap-2 text-slate-500 text-sm mt-3"
               >
-                <Phone size={13} /> (555) 867-5309
+                <Phone size={13} /> 407-544-0139
               </a>
             </div>
           </nav>

@@ -122,12 +122,12 @@ export default function Home() {
             </div>
 
             <a
-              href="tel:5558675309"
+              href="tel:4075440139"
               className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mt-2"
               data-testid="link-hero-phone"
             >
               <Phone size={15} />
-              <span>(555) 867-5309 — Mon–Fri, 8 AM–5 PM</span>
+              <span>407-544-0139 — Mon–Sat, 8 AM–4 PM</span>
             </a>
           </Reveal>
         </div>
@@ -380,9 +380,9 @@ export default function Home() {
               <Link href="/procedures">View Our Procedures</Link>
             </Button>
           </div>
-          <a href="tel:5558675309" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mt-6">
+          <a href="tel:4075440139" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mt-6">
             <Phone size={14} />
-            <span>Or call us at (555) 867-5309</span>
+            <span>Or call us at 407-544-0139</span>
           </a>
         </Reveal>
       </section>

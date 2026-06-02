@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import logoPath from "@assets/amp-logo.png";
-import { Phone, MapPin, Clock, Facebook, Instagram, Twitter } from "lucide-react";
+import { Phone, MapPin, Mail, Clock, Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -36,11 +36,15 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="text-primary shrink-0 mt-0.5" size={18} />
-                <span>123 Medical Center Dr, Suite 200<br/>San Francisco, CA 94143</span>
+                <span>3861 Avalon Park E Blvd<br/>Orlando, FL 32828</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-primary shrink-0" size={18} />
-                <span>(555) 867-5309</span>
+                <a href="tel:4075440139" className="hover:text-white transition-colors">407-544-0139</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="text-primary shrink-0" size={18} />
+                <a href="mailto:info@ampomfs.com" className="hover:text-white transition-colors">info@ampomfs.com</a>
               </li>
             </ul>
           </div>
@@ -49,14 +53,17 @@ export default function Footer() {
             <h4 className="text-white font-display font-semibold text-lg">Hours</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex justify-between border-b border-slate-700/50 pb-2">
-                <span>Monday - Friday</span>
-                <span>8:00 AM - 5:00 PM</span>
+                <span>Monday - Saturday</span>
+                <span>8:00 AM - 4:00 PM</span>
               </li>
               <li className="flex justify-between border-b border-slate-700/50 pb-2 text-slate-500">
-                <span>Saturday - Sunday</span>
+                <span>Sunday</span>
                 <span>Closed</span>
               </li>
             </ul>
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Concierge and after-hours appointments available by request.
+            </p>
           </div>
 
         </div>

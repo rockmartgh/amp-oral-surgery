@@ -162,8 +162,8 @@ export default function Insurance() {
                   Our financial coordinators are here to help you navigate your benefits and find
                   the best path to treatment.
                 </p>
-                <p className="font-bold text-slate-900">(555) 867-5309</p>
-                <p className="text-slate-400 text-xs mt-1">Monday – Friday, 8:00 AM – 5:00 PM</p>
+                <p className="font-bold text-slate-900">407-544-0139</p>
+                <p className="text-slate-400 text-xs mt-1">Monday – Saturday, 8:00 AM – 4:00 PM</p>
               </div>
             </Reveal>
           </div>

@@ -195,8 +195,8 @@ export default function NewPatients() {
                 <p className="text-slate-500 text-sm leading-relaxed mb-3">
                   Our team is happy to answer any pre-visit questions. Don't hesitate to reach out.
                 </p>
-                <p className="font-bold text-slate-900">(555) 867-5309</p>
-                <p className="text-slate-400 text-xs mt-1">Monday – Friday, 8:00 AM – 5:00 PM</p>
+                <p className="font-bold text-slate-900">407-544-0139</p>
+                <p className="text-slate-400 text-xs mt-1">Monday – Saturday, 8:00 AM – 4:00 PM</p>
               </div>
             </Reveal>
           </div>
