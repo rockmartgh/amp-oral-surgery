@@ -1,1 +1,2 @@
 - [framer-motion reduced-motion](framer-motion-reduced-motion.md) — CSS prefers-reduced-motion does NOT stop framer JS animations; use useReducedMotion() in reveal wrappers.
+- [shadcn button border tokens](shadcn-button-border-tokens.md) — stray white ring on primary/secondary buttons = undefined `--primary-border` falling back to currentColor; define it in index.css.

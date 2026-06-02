@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ShieldCheck, Heart, Stethoscope, ArrowRight, Star, Phone, Quote } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import heroImg from "@assets/hero-surgery.png";
-import heroBgImg from "@assets/image_1780386195493.png";
-import aboutImg from "@assets/about-team.png";
-import consultationImg from "@assets/consultation.png";
+import heroImg from "@assets/office-surgery.jpg";
+import heroBgImg from "@assets/office-reception-hero.jpg";
+import aboutImg from "@assets/office-team.jpg";
+import consultationImg from "@assets/office-consultation.jpg";
 
 const stats = [
   { value: "15+", label: "Years of Experience" },
@@ -68,7 +68,7 @@ export default function Home() {
       <title>AMP Oral Surgery | Expert Oral & Maxillofacial Care</title>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-slate-900">
+      <section className="relative min-h-[82vh] flex items-end overflow-hidden bg-slate-900">
         <img
           src={heroBgImg}
           alt=""
@@ -80,7 +80,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-dark opacity-40" />
         <div className="glow-blob bg-primary/40 w-[420px] h-[420px] -top-20 -left-20" />
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-24 pt-40">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 pb-20 pt-28">
           <Reveal y={20} className="max-w-2xl text-white space-y-6">
             <div
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md"

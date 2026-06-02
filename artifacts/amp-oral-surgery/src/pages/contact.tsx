@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, MapPin, Mail, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import receptionImg from "@assets/reception-area.png";
+import receptionImg from "@assets/office-lounge.jpg";
 
 const contactInfo = [
   {
@@ -67,7 +67,7 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/92 via-slate-900/65 to-slate-900/30" />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-white" />
         <div className="absolute inset-0 bg-grid-dark opacity-25" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-28 pb-40">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-36 pb-32">
           <Reveal y={20} className="max-w-2xl">
             <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 text-white px-3 py-1 text-xs font-semibold tracking-wider uppercase mb-4 w-fit backdrop-blur-md">
               Get in Touch
