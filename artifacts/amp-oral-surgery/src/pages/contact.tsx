@@ -303,7 +303,7 @@ export default function Contact() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {locations.map((loc, i) => (
-              <Reveal key={loc.name} delay={i * 0.1}>
+              <Reveal key={loc.name} delay={i * 0.1} className="h-full">
                 <div className="rounded-3xl overflow-hidden border border-slate-200/70 shadow-lifted h-full flex flex-col">
                   <div className="flex items-start gap-3 px-6 py-5 bg-white border-b border-slate-100">
                     <div className="bg-blue-50 text-primary w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
