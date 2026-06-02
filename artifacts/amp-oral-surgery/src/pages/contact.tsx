@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, MapPin, Mail, CheckCircle2, Clock, Instagram, ArrowRight, Navigation } from "lucide-react";
+import { Phone, MapPin, Mail, CheckCircle2, Clock, Instagram, ArrowRight, Navigation, CalendarCheck, Stethoscope } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/office-lounge.jpg";
 
@@ -63,8 +63,17 @@ const hours = [
   { day: "Sunday", time: "Closed" },
 ];
 
+type TabKey = "appointment" | "referral";
+
+const tabs: { key: TabKey; label: string; icon: typeof CalendarCheck }[] = [
+  { key: "appointment", label: "Request an Appointment", icon: CalendarCheck },
+  { key: "referral", label: "Refer a Patient", icon: Stethoscope },
+];
+
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabKey>("appointment");
+  const [submitted, setSubmitted] = useState<TabKey | null>(null);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -73,15 +82,43 @@ export default function Contact() {
     message: "",
   });
 
+  const [referral, setReferral] = useState({
+    practiceName: "",
+    referringDoctor: "",
+    referralEmail: "",
+    referralPhone: "",
+    patientName: "",
+    patientPhone: "",
+    reason: "",
+    urgency: "Routine",
+    notes: "",
+  });
+
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
+  function handleReferralChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) {
+    setReferral({ ...referral, [e.target.name]: e.target.value });
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitted("appointment");
+  }
+
+  function handleReferralSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted("referral");
+  }
+
+  function selectTab(key: TabKey) {
+    setActiveTab(key);
+    setSubmitted(null);
   }
 
   return (
@@ -154,76 +191,201 @@ export default function Contact() {
 
             {/* Form */}
             <Reveal>
-              <div className="bg-white rounded-3xl p-8 lg:p-10 border border-slate-200/70 shadow-lifted">
-                <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 w-fit">
-                  Send a Message
-                </span>
-                <h2 className="text-2xl lg:text-3xl font-bold font-display text-slate-900 mt-4 mb-2">
-                  Request an Appointment
-                </h2>
-                <p className="text-slate-500 text-sm leading-relaxed mb-7">
-                  Fill out the form below and a member of our team will reach out to help you schedule.
-                </p>
-
-                {submitted ? (
-                  <div className="bg-green-50 border border-green-100 rounded-2xl p-10 text-center">
-                    <CheckCircle2 size={40} className="text-green-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-slate-900 font-display mb-2">
-                      Message Received!
-                    </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
-                      Thank you for reaching out. A member of our team will contact you shortly to
-                      follow up.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <Label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</Label>
-                        <Input id="name" name="name" required placeholder="Jane Smith" value={form.name} onChange={handleChange} data-testid="input-name" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone Number</Label>
-                        <Input id="phone" name="phone" type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={handleChange} data-testid="input-phone" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-medium text-slate-700">Email Address</Label>
-                      <Input id="email" name="email" type="email" required placeholder="jane@example.com" value={form.email} onChange={handleChange} data-testid="input-email" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="preferredContact" className="text-sm font-medium text-slate-700">Preferred Contact Method</Label>
-                      <select
-                        id="preferredContact"
-                        name="preferredContact"
-                        value={form.preferredContact}
-                        onChange={handleChange}
-                        data-testid="select-preferred-contact"
-                        className="w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              <div className="bg-white rounded-3xl border border-slate-200/70 shadow-lifted overflow-hidden">
+                {/* Tab switcher */}
+                <div className="grid grid-cols-2 gap-1.5 p-1.5 bg-slate-100/80 border-b border-slate-200/70">
+                  {tabs.map((tab) => {
+                    const isActive = activeTab === tab.key;
+                    return (
+                      <button
+                        key={tab.key}
+                        type="button"
+                        onClick={() => selectTab(tab.key)}
+                        data-testid={`tab-${tab.key}`}
+                        aria-pressed={isActive}
+                        className={`flex items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold transition-all ${
+                          isActive
+                            ? "bg-white text-primary shadow-sm ring-1 ring-slate-200/70"
+                            : "text-slate-500 hover:text-slate-700"
+                        }`}
                       >
-                        <option>Phone</option>
-                        <option>Email</option>
-                        <option>Either</option>
-                      </select>
-                    </div>
+                        <tab.icon size={16} className="shrink-0" />
+                        <span className="truncate">{tab.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm font-medium text-slate-700">Message</Label>
-                      <Textarea id="message" name="message" required rows={5} placeholder="Tell us how we can help you..." value={form.message} onChange={handleChange} data-testid="textarea-message" />
-                    </div>
+                <div className="p-8 lg:p-10">
+                  {activeTab === "appointment" ? (
+                    <>
+                      <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 w-fit">
+                        For Patients
+                      </span>
+                      <h2 className="text-2xl lg:text-3xl font-bold font-display text-slate-900 mt-4 mb-2">
+                        Request an Appointment
+                      </h2>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-7">
+                        Fill out the form below and a member of our team will reach out to help you schedule.
+                      </p>
 
-                    <Button type="submit" size="lg" className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-contact">
-                      Send Message
-                    </Button>
+                      {submitted === "appointment" ? (
+                        <div className="bg-green-50 border border-green-100 rounded-2xl p-10 text-center">
+                          <CheckCircle2 size={40} className="text-green-500 mx-auto mb-4" />
+                          <h3 className="text-2xl font-bold text-slate-900 font-display mb-2">
+                            Message Received!
+                          </h3>
+                          <p className="text-slate-500 text-sm leading-relaxed">
+                            Thank you for reaching out. A member of our team will contact you shortly to
+                            follow up.
+                          </p>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleSubmit} className="space-y-5">
+                          <div className="grid sm:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                              <Label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</Label>
+                              <Input id="name" name="name" required placeholder="Jane Smith" value={form.name} onChange={handleChange} data-testid="input-name" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone Number</Label>
+                              <Input id="phone" name="phone" type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={handleChange} data-testid="input-phone" />
+                            </div>
+                          </div>
 
-                    <p className="text-xs text-slate-400 text-center">
-                      For urgent matters, please call us directly at 407-544-0139.
-                    </p>
-                  </form>
-                )}
+                          <div className="space-y-2">
+                            <Label htmlFor="email" className="text-sm font-medium text-slate-700">Email Address</Label>
+                            <Input id="email" name="email" type="email" required placeholder="jane@example.com" value={form.email} onChange={handleChange} data-testid="input-email" />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="preferredContact" className="text-sm font-medium text-slate-700">Preferred Contact Method</Label>
+                            <select
+                              id="preferredContact"
+                              name="preferredContact"
+                              value={form.preferredContact}
+                              onChange={handleChange}
+                              data-testid="select-preferred-contact"
+                              className="w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            >
+                              <option>Phone</option>
+                              <option>Email</option>
+                              <option>Either</option>
+                            </select>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="message" className="text-sm font-medium text-slate-700">Message</Label>
+                            <Textarea id="message" name="message" required rows={5} placeholder="Tell us how we can help you..." value={form.message} onChange={handleChange} data-testid="textarea-message" />
+                          </div>
+
+                          <Button type="submit" size="lg" className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-contact">
+                            Send Message
+                          </Button>
+
+                          <p className="text-xs text-slate-400 text-center">
+                            For urgent matters, please call us directly at 407-544-0139.
+                          </p>
+                        </form>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <span className="inline-flex items-center rounded-full bg-blue-50 text-primary px-3 py-1 text-xs font-semibold tracking-wider uppercase ring-1 ring-blue-100 w-fit">
+                        For Referring Doctors
+                      </span>
+                      <h2 className="text-2xl lg:text-3xl font-bold font-display text-slate-900 mt-4 mb-2">
+                        Refer a Patient
+                      </h2>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-7">
+                        Send us a referral and our team will coordinate care and keep you informed throughout treatment.
+                      </p>
+
+                      {submitted === "referral" ? (
+                        <div className="bg-green-50 border border-green-100 rounded-2xl p-10 text-center">
+                          <CheckCircle2 size={40} className="text-green-500 mx-auto mb-4" />
+                          <h3 className="text-2xl font-bold text-slate-900 font-display mb-2">
+                            Referral Received!
+                          </h3>
+                          <p className="text-slate-500 text-sm leading-relaxed">
+                            Thank you for trusting us with your patient. Our team will reach out shortly to
+                            coordinate the next steps.
+                          </p>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleReferralSubmit} className="space-y-5">
+                          <div className="grid sm:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                              <Label htmlFor="practiceName" className="text-sm font-medium text-slate-700">Practice Name</Label>
+                              <Input id="practiceName" name="practiceName" required placeholder="Avalon Dental" value={referral.practiceName} onChange={handleReferralChange} data-testid="input-practice-name" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="referringDoctor" className="text-sm font-medium text-slate-700">Referring Doctor</Label>
+                              <Input id="referringDoctor" name="referringDoctor" required placeholder="Dr. Smith" value={referral.referringDoctor} onChange={handleReferralChange} data-testid="input-referring-doctor" />
+                            </div>
+                          </div>
+
+                          <div className="grid sm:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                              <Label htmlFor="referralEmail" className="text-sm font-medium text-slate-700">Email Address</Label>
+                              <Input id="referralEmail" name="referralEmail" type="email" required placeholder="office@practice.com" value={referral.referralEmail} onChange={handleReferralChange} data-testid="input-referral-email" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="referralPhone" className="text-sm font-medium text-slate-700">Office Phone</Label>
+                              <Input id="referralPhone" name="referralPhone" type="tel" placeholder="(555) 000-0000" value={referral.referralPhone} onChange={handleReferralChange} data-testid="input-referral-phone" />
+                            </div>
+                          </div>
+
+                          <div className="grid sm:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                              <Label htmlFor="patientName" className="text-sm font-medium text-slate-700">Patient Name</Label>
+                              <Input id="patientName" name="patientName" required placeholder="John Doe" value={referral.patientName} onChange={handleReferralChange} data-testid="input-patient-name" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="patientPhone" className="text-sm font-medium text-slate-700">Patient Phone</Label>
+                              <Input id="patientPhone" name="patientPhone" type="tel" placeholder="(555) 000-0000" value={referral.patientPhone} onChange={handleReferralChange} data-testid="input-patient-phone" />
+                            </div>
+                          </div>
+
+                          <div className="grid sm:grid-cols-2 gap-5">
+                            <div className="space-y-2">
+                              <Label htmlFor="reason" className="text-sm font-medium text-slate-700">Reason for Referral</Label>
+                              <Input id="reason" name="reason" required placeholder="Extraction, implant, etc." value={referral.reason} onChange={handleReferralChange} data-testid="input-reason" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="urgency" className="text-sm font-medium text-slate-700">Urgency</Label>
+                              <select
+                                id="urgency"
+                                name="urgency"
+                                value={referral.urgency}
+                                onChange={handleReferralChange}
+                                data-testid="select-urgency"
+                                className="w-full rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                              >
+                                <option>Routine</option>
+                                <option>Urgent</option>
+                                <option>Emergency</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="notes" className="text-sm font-medium text-slate-700">Clinical Notes</Label>
+                            <Textarea id="notes" name="notes" rows={4} placeholder="Relevant history, imaging, or instructions..." value={referral.notes} onChange={handleReferralChange} data-testid="textarea-notes" />
+                          </div>
+
+                          <Button type="submit" size="lg" className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-referral">
+                            Send Referral
+                          </Button>
+
+                          <p className="text-xs text-slate-400 text-center">
+                            For urgent referrals, please call us directly at 407-544-0139.
+                          </p>
+                        </form>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
             </Reveal>
 
