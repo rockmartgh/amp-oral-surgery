@@ -1,0 +1,77 @@
+// Resend integration (blueprint id: resend) — sends transactional email
+// via the Replit Connectors proxy. Do not cache the client; tokens refresh.
+import { ReplitConnectors } from "@replit/connectors-sdk";
+import { logger } from "./logger";
+
+// Recipients that receive every form submission.
+export const FORM_RECIPIENTS = ["info@ampomfs.com", "lenneia.batiste@ampomfs.com"];
+
+// Sender must be on a domain verified in the Resend account.
+const FROM_ADDRESS = process.env.RESEND_FROM ?? "AMP Oral Surgery <noreply@ampomfs.com>";
+
+interface SendEmailInput {
+  to: string[];
+  subject: string;
+  html: string;
+  text: string;
+  replyTo?: string;
+}
+
+export async function sendEmail({ to, subject, html, text, replyTo }: SendEmailInput) {
+  const connectors = new ReplitConnectors();
+
+  const body: Record<string, unknown> = {
+    from: FROM_ADDRESS,
+    to,
+    subject,
+    html,
+    text,
+  };
+  if (replyTo) {
+    body.reply_to = replyTo;
+  }
+
+  const response = await connectors.proxy("resend", "/emails", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  logger.info({ to, subject }, "email sent via Resend");
+  return response;
+}
+
+function row(label: string, value: string | undefined) {
+  if (!value) return "";
+  return `<tr><td style="padding:6px 12px;font-weight:600;color:#0B1A30;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 12px;color:#334155">${escapeHtml(
+    value,
+  )}</td></tr>`;
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+export function buildEmailHtml(title: string, fields: Array<[string, string | undefined]>) {
+  const rows = fields.map(([label, value]) => row(label, value)).join("");
+  return `<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto">
+    <div style="background:#0B1A30;padding:20px 24px;border-radius:12px 12px 0 0">
+      <h2 style="margin:0;color:#ffffff;font-size:18px">${escapeHtml(title)}</h2>
+      <p style="margin:4px 0 0;color:#94a3b8;font-size:13px">AMP Oral Surgery website</p>
+    </div>
+    <table style="width:100%;border-collapse:collapse;background:#ffffff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 12px 12px;font-size:14px">
+      ${rows}
+    </table>
+  </div>`;
+}
+
+export function buildEmailText(title: string, fields: Array<[string, string | undefined]>) {
+  const lines = fields
+    .filter(([, value]) => Boolean(value))
+    .map(([label, value]) => `${label}: ${value}`);
+  return `${title}\n\n${lines.join("\n")}`;
+}

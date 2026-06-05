@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: contact
+    description: Contact form operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,44 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /contact/appointment:
+    post:
+      operationId: submitAppointment
+      tags: [contact]
+      summary: Submit an appointment request
+      description: Sends an appointment request to the practice via email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppointmentRequest"
+      responses:
+        "200":
+          description: Submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmitResponse"
+  /contact/referral:
+    post:
+      operationId: submitReferral
+      tags: [contact]
+      summary: Submit a patient referral
+      description: Sends a patient referral to the practice via email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReferralRequest"
+      responses:
+        "200":
+          description: Submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmitResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +73,62 @@ components:
           type: string
       required:
         - status
-
+    AppointmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        preferredContact:
+          type: string
+        message:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - email
+        - message
+    ReferralRequest:
+      type: object
+      properties:
+        practiceName:
+          type: string
+          minLength: 1
+        referringDoctor:
+          type: string
+          minLength: 1
+        referralEmail:
+          type: string
+          format: email
+        referralPhone:
+          type: string
+        patientName:
+          type: string
+          minLength: 1
+        patientPhone:
+          type: string
+        reason:
+          type: string
+          minLength: 1
+        urgency:
+          type: string
+        notes:
+          type: string
+      required:
+        - practiceName
+        - referringDoctor
+        - referralEmail
+        - patientName
+        - reason
+    SubmitResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+      required:
+        - success

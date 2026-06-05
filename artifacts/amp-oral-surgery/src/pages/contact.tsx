@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, MapPin, Mail, CheckCircle2, Clock, Instagram, ArrowRight, Navigation, CalendarCheck, Stethoscope } from "lucide-react";
+import { Phone, MapPin, Mail, CheckCircle2, Clock, Instagram, ArrowRight, Navigation, CalendarCheck, Stethoscope, Loader2 } from "lucide-react";
+import { useSubmitAppointment, useSubmitReferral } from "@workspace/api-client-react";
 import { Reveal } from "@/components/Reveal";
 import receptionImg from "@assets/office-lounge.jpg";
 
@@ -94,6 +95,9 @@ export default function Contact() {
     notes: "",
   });
 
+  const appointmentMutation = useSubmitAppointment();
+  const referralMutation = useSubmitReferral();
+
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
@@ -108,12 +112,18 @@ export default function Contact() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted("appointment");
+    appointmentMutation.mutate(
+      { data: form },
+      { onSuccess: () => setSubmitted("appointment") }
+    );
   }
 
   function handleReferralSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted("referral");
+    referralMutation.mutate(
+      { data: referral },
+      { onSuccess: () => setSubmitted("referral") }
+    );
   }
 
   function selectTab(key: TabKey) {
@@ -279,9 +289,19 @@ export default function Contact() {
                             <Textarea id="message" name="message" required rows={5} placeholder="Tell us how we can help you..." value={form.message} onChange={handleChange} data-testid="textarea-message" />
                           </div>
 
-                          <Button type="submit" size="lg" className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-contact">
-                            Send Message
+                          <Button type="submit" size="lg" disabled={appointmentMutation.isPending} className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-contact">
+                            {appointmentMutation.isPending ? (
+                              <><Loader2 size={16} className="mr-2 animate-spin" /> Sending...</>
+                            ) : (
+                              "Send Message"
+                            )}
                           </Button>
+
+                          {appointmentMutation.isError && (
+                            <p className="text-xs text-rose-600 text-center">
+                              Something went wrong sending your message. Please call us at 407-544-0139.
+                            </p>
+                          )}
 
                           <p className="text-xs text-slate-400 text-center">
                             For urgent matters, please call us directly at 407-544-0139.
@@ -374,9 +394,19 @@ export default function Contact() {
                             <Textarea id="notes" name="notes" rows={4} placeholder="Relevant history, imaging, or instructions..." value={referral.notes} onChange={handleReferralChange} data-testid="textarea-notes" />
                           </div>
 
-                          <Button type="submit" size="lg" className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-referral">
-                            Send Referral
+                          <Button type="submit" size="lg" disabled={referralMutation.isPending} className="w-full rounded-full font-semibold shadow-glow-soft hover:shadow-glow transition-shadow" data-testid="button-submit-referral">
+                            {referralMutation.isPending ? (
+                              <><Loader2 size={16} className="mr-2 animate-spin" /> Sending...</>
+                            ) : (
+                              "Send Referral"
+                            )}
                           </Button>
+
+                          {referralMutation.isError && (
+                            <p className="text-xs text-rose-600 text-center">
+                              Something went wrong sending your referral. Please call us at 407-544-0139.
+                            </p>
+                          )}
 
                           <p className="text-xs text-slate-400 text-center">
                             For urgent referrals, please call us directly at 407-544-0139.
