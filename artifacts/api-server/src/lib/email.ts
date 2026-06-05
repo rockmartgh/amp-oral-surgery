@@ -7,7 +7,9 @@ import { logger } from "./logger";
 export const FORM_RECIPIENTS = ["info@ampomfs.com", "lenneia.batiste@ampomfs.com"];
 
 // Sender must be on a domain verified in the Resend account.
-const FROM_ADDRESS = process.env.RESEND_FROM ?? "AMP Oral Surgery <noreply@ampomfs.com>";
+// pinpointmailer.com is the verified sending domain; reply-to carries the
+// submitter's address so the team can respond directly.
+const FROM_ADDRESS = process.env.RESEND_FROM ?? "AMP Oral Surgery <noreply@pinpointmailer.com>";
 
 interface SendEmailInput {
   to: string[];
@@ -37,8 +39,14 @@ export async function sendEmail({ to, subject, html, text, replyTo }: SendEmailI
     body: JSON.stringify(body),
   });
 
-  logger.info({ to, subject }, "email sent via Resend");
-  return response;
+  const result = (await response.json().catch(() => null)) as { id?: string } | null;
+  if (!response.ok) {
+    logger.error({ to, subject, status: response.status, result }, "Resend email failed");
+    throw new Error(`Resend returned ${response.status}`);
+  }
+
+  logger.info({ to, subject, id: result?.id }, "email sent via Resend");
+  return result;
 }
 
 function row(label: string, value: string | undefined) {

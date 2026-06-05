@@ -1,4 +1,5 @@
 import { Router, type IRouter } from "express";
+import rateLimit from "express-rate-limit";
 import { SubmitAppointmentBody, SubmitReferralBody } from "@workspace/api-zod";
 import {
   sendEmail,
@@ -9,7 +10,16 @@ import {
 
 const router: IRouter = Router();
 
-router.post("/contact/appointment", async (req, res) => {
+// Limit form submissions to curb automated spam to internal inboxes.
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: "Too many submissions. Please try again later." },
+});
+
+router.post("/contact/appointment", contactLimiter, async (req, res) => {
   const parsed = SubmitAppointmentBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Invalid submission", details: parsed.error.issues });
@@ -40,7 +50,7 @@ router.post("/contact/appointment", async (req, res) => {
   }
 });
 
-router.post("/contact/referral", async (req, res) => {
+router.post("/contact/referral", contactLimiter, async (req, res) => {
   const parsed = SubmitReferralBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Invalid submission", details: parsed.error.issues });
