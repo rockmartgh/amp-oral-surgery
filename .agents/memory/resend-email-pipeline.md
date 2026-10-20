@@ -26,7 +26,16 @@ Must `await response.json()` and check `response.ok` — otherwise a failed send
 (non-2xx) looks like success. `JSON.stringify` on the Response prints `{}`.
 
 ## Abuse protection
-Public unauthenticated email endpoints are a spam surface. Contact routes use
-`express-rate-limit` (5 req / 15 min). Requires `app.set("trust proxy", 1)`
-because the app runs behind Replit's shared reverse proxy — without it the
-limiter keys on the proxy IP, not the client.
+Public unauthenticated email endpoints are a spam surface.
+
+**Defense layers (in order):**
+1. Content heuristics in `api/contact/_lib.js` (Vercel) and
+   `artifacts/api-server/src/lib/spam.ts` (Express/local) — gibberish names,
+   excessive-dot Gmail locals, digits-only messages, honeypot, min form fill time.
+   Matches are **silently discarded** (`200 { success: true }`) so bots don't adapt.
+2. Hidden honeypot (`website`) + `formStartedAt` from the contact page.
+3. Express-only: `express-rate-limit` (5 req / 15 min). Requires
+   `app.set("trust proxy", 1)` behind Replit's reverse proxy.
+
+**Spam pattern observed Sep 2026:** random mixed-case names with no spaces,
+highly dotted Gmail addresses, message = phone digits only.

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -74,6 +74,8 @@ const tabs: { key: TabKey; label: string; icon: typeof CalendarCheck }[] = [
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<TabKey>("appointment");
   const [submitted, setSubmitted] = useState<TabKey | null>(null);
+  const [honeypot, setHoneypot] = useState("");
+  const formStartedAt = useRef(Date.now());
 
   const [form, setForm] = useState({
     name: "",
@@ -98,6 +100,19 @@ export default function Contact() {
   const appointmentMutation = useSubmitAppointment();
   const referralMutation = useSubmitReferral();
 
+  function omitBlankFields<T extends Record<string, string>>(values: T) {
+    return Object.fromEntries(
+      Object.entries(values).filter(([, value]) => value !== ""),
+    ) as T;
+  }
+
+  function antiSpamFields() {
+    return {
+      website: honeypot,
+      formStartedAt: formStartedAt.current,
+    };
+  }
+
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
@@ -113,7 +128,7 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     appointmentMutation.mutate(
-      { data: form },
+      { data: { ...omitBlankFields(form), ...antiSpamFields() } as typeof form },
       { onSuccess: () => setSubmitted("appointment") }
     );
   }
@@ -121,7 +136,7 @@ export default function Contact() {
   function handleReferralSubmit(e: React.FormEvent) {
     e.preventDefault();
     referralMutation.mutate(
-      { data: referral },
+      { data: { ...omitBlankFields(referral), ...antiSpamFields() } as typeof referral },
       { onSuccess: () => setSubmitted("referral") }
     );
   }
@@ -251,7 +266,20 @@ export default function Contact() {
                           </p>
                         </div>
                       ) : (
-                        <form onSubmit={handleSubmit} className="space-y-5">
+                        <form onSubmit={handleSubmit} className="space-y-5 relative">
+                          {/* Honeypot — leave empty; bots that auto-fill get discarded server-side */}
+                          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+                            <label htmlFor="website">Website</label>
+                            <input
+                              id="website"
+                              name="website"
+                              type="text"
+                              tabIndex={-1}
+                              autoComplete="off"
+                              value={honeypot}
+                              onChange={(e) => setHoneypot(e.target.value)}
+                            />
+                          </div>
                           <div className="grid sm:grid-cols-2 gap-5">
                             <div className="space-y-2">
                               <Label htmlFor="name" className="text-sm font-medium text-slate-700">Full Name</Label>
@@ -333,7 +361,19 @@ export default function Contact() {
                           </p>
                         </div>
                       ) : (
-                        <form onSubmit={handleReferralSubmit} className="space-y-5">
+                        <form onSubmit={handleReferralSubmit} className="space-y-5 relative">
+                          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+                            <label htmlFor="referral-website">Website</label>
+                            <input
+                              id="referral-website"
+                              name="website"
+                              type="text"
+                              tabIndex={-1}
+                              autoComplete="off"
+                              value={honeypot}
+                              onChange={(e) => setHoneypot(e.target.value)}
+                            />
+                          </div>
                           <div className="grid sm:grid-cols-2 gap-5">
                             <div className="space-y-2">
                               <Label htmlFor="practiceName" className="text-sm font-medium text-slate-700">Practice Name</Label>

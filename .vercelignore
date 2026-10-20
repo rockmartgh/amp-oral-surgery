@@ -2,7 +2,12 @@
 .git
 .agents
 .cache
+.node_modules
 node_modules
 **/node_modules
 **/dist
 artifacts/mockup-sandbox
+attached_assets/*.zip
+attached_assets/*.pdf
+attached_assets/*.txt
+attached_assets/*1780387615176.mp4

@@ -1,6 +1,6 @@
-// Resend integration (blueprint id: resend) — sends transactional email
-// via the Replit Connectors proxy. Do not cache the client; tokens refresh.
-import { ReplitConnectors } from "@replit/connectors-sdk";
+// Resend integration (blueprint id: resend) — sends transactional email.
+// On Replit, mail goes through the Connectors proxy. On Vercel (and other
+// hosts) we call the Resend HTTP API with RESEND_API_KEY.
 import { logger } from "./logger";
 
 // Recipients that receive every form submission.
@@ -19,9 +19,7 @@ interface SendEmailInput {
   replyTo?: string;
 }
 
-export async function sendEmail({ to, subject, html, text, replyTo }: SendEmailInput) {
-  const connectors = new ReplitConnectors();
-
+function buildResendPayload({ to, subject, html, text, replyTo }: SendEmailInput) {
   const body: Record<string, unknown> = {
     from: FROM_ADDRESS,
     to,
@@ -32,21 +30,61 @@ export async function sendEmail({ to, subject, html, text, replyTo }: SendEmailI
   if (replyTo) {
     body.reply_to = replyTo;
   }
+  return body;
+}
 
-  const response = await connectors.proxy("resend", "/emails", {
+async function sendViaResendHttp(input: SendEmailInput, apiKey: string) {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(buildResendPayload(input)),
   });
 
   const result = (await response.json().catch(() => null)) as { id?: string } | null;
   if (!response.ok) {
-    logger.error({ to, subject, status: response.status, result }, "Resend email failed");
+    logger.error(
+      { to: input.to, subject: input.subject, status: response.status, result },
+      "Resend email failed",
+    );
     throw new Error(`Resend returned ${response.status}`);
   }
 
-  logger.info({ to, subject, id: result?.id }, "email sent via Resend");
+  logger.info({ to: input.to, subject: input.subject, id: result?.id }, "email sent via Resend");
   return result;
+}
+
+async function sendViaReplitConnectors(input: SendEmailInput) {
+  const { ReplitConnectors } = await import("@replit/connectors-sdk");
+  const connectors = new ReplitConnectors();
+
+  const response = await connectors.proxy("resend", "/emails", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(buildResendPayload(input)),
+  });
+
+  const result = (await response.json().catch(() => null)) as { id?: string } | null;
+  if (!response.ok) {
+    logger.error(
+      { to: input.to, subject: input.subject, status: response.status, result },
+      "Resend email failed",
+    );
+    throw new Error(`Resend returned ${response.status}`);
+  }
+
+  logger.info({ to: input.to, subject: input.subject, id: result?.id }, "email sent via Resend");
+  return result;
+}
+
+export async function sendEmail(input: SendEmailInput) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (apiKey) {
+    return sendViaResendHttp(input, apiKey);
+  }
+  return sendViaReplitConnectors(input);
 }
 
 function row(label: string, value: string | undefined) {
