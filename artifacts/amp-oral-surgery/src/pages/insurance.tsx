@@ -13,6 +13,31 @@ const whyAMP = [
   "Long-standing reputation for quality",
 ];
 
+const dentalPlans = [
+  "Anthem / Unicare / Wellpoint",
+  "Argus",
+  "BCBS BlueDental Choice PPO",
+  "BCBS BlueDental Copayment PPO",
+  "BCBS Federal Employee Program (FEP)",
+  "Careington Platinum PPO",
+  "Careington Care PPO",
+  "Cigna Advantage",
+  "Delta Dental PPO",
+  "Delta Dental Premier",
+  "Dentegra",
+  "Humana",
+  "MetLife PPO",
+  "Premier Dental Group",
+  "Sun Life / DHA",
+  "United Concordia ADDP",
+  "United Concordia TOP",
+  "United Concordia National Advantage / NFFS",
+  "UnitedHealthcare",
+  "Zelis",
+];
+
+const medicarePlans = ["Humana", "UnitedHealthcare PPO"];
+
 const paymentOptions = [
   {
     title: "CareCredit",
@@ -68,6 +93,28 @@ export default function Insurance() {
               <Link href="/contact">Contact Our Billing Team</Link>
             </Button>
           </Reveal>
+        </div>
+      </section>
+
+      <section aria-labelledby="accepted-plans-heading" className="py-16 bg-white border-b border-slate-300">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 id="accepted-plans-heading" className="text-3xl md:text-4xl font-bold font-display text-slate-900 mb-5">Insurance Plans</h2>
+          <p className="text-slate-700 max-w-3xl mb-10 leading-relaxed">Our participating plans are listed below. Benefits, network participation, and coverage depend on your specific plan and procedure. Please contact our billing team and your insurer to verify your benefits before treatment. A listed plan does not guarantee coverage or payment.</p>
+          <div className="grid lg:grid-cols-[2fr_1fr] gap-12">
+            <div className="border-t-4 border-primary pt-5">
+              <h3 className="text-2xl font-bold text-slate-900 mb-5">Participating PPO / Dental Plans</h3>
+              <ul className="grid md:grid-cols-2 gap-x-8 text-base text-slate-900" data-testid="dental-plans">
+                {dentalPlans.map((plan) => <li key={plan} className="py-3 border-b border-slate-300 leading-relaxed">{plan}</li>)}
+              </ul>
+            </div>
+            <div className="border-t-4 border-primary pt-5">
+              <h3 className="text-2xl font-bold text-slate-900 mb-5">Accepted Medicare Plans</h3>
+              <ul className="text-base text-slate-900" data-testid="medicare-plans">
+                {medicarePlans.map((plan) => <li key={plan} className="py-3 border-b border-slate-300 leading-relaxed">{plan}</li>)}
+              </ul>
+              <p className="text-base text-slate-700 mt-6">Questions about your plan? Call <a className="text-primary underline underline-offset-4" href="tel:4075440139">407-544-0139</a>.</p>
+            </div>
+          </div>
         </div>
       </section>
 

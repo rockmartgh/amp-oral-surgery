@@ -11,6 +11,7 @@ import NewPatients from "@/pages/new-patients";
 import Insurance from "@/pages/insurance";
 import Contact from "@/pages/contact";
 import PatientResources from "@/pages/patient-resources";
+import { PrivacyPolicy, TermsAndConditions } from "@/pages/policies";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -67,6 +68,8 @@ function Router() {
           <Route path="/insurance" component={Insurance} />
           <Route path="/patient-resources" component={PatientResources} />
           <Route path="/contact" component={Contact} />
+          <Route path="/privacy" component={PrivacyPolicy} />
+          <Route path="/terms" component={TermsAndConditions} />
           <Route component={NotFound} />
         </Switch>
       </main>

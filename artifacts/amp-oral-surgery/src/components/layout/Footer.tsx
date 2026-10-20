@@ -36,7 +36,7 @@ export default function Footer() {
               <li><Link href="/new-patients" className="hover:text-white transition-colors text-sm">New Patients</Link></li>
               <li><Link href="/insurance" className="hover:text-white transition-colors text-sm">Insurance & Billing</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors text-sm">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-white transition-colors text-sm">Terms of Service</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition-colors text-sm">Terms and Conditions</Link></li>
             </ul>
           </div>
 

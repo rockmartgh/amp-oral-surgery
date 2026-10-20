@@ -4,6 +4,11 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/amp-oral-surgery run build",
   "outputDirectory": "artifacts/amp-oral-surgery/dist/public",
+  "redirects": [
+    { "source": "/privacy-policy/:path*", "destination": "/privacy", "permanent": true },
+    { "source": "/terms-of-service/:path*", "destination": "/terms", "permanent": true },
+    { "source": "/terms-and-conditions/:path*", "destination": "/terms", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
